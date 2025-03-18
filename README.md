@@ -10,8 +10,13 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 - Strong research methodology from academic training (BA in History, MA in Cultural Anthropology)
 - Clear communication and exposition of complex findings
 
-## Projects
-[Consider adding 1-2 highlighted projects here]
+## Resources
+Here are some of my publicly available files:
+
+- [**File 1**](your-folder/your-file-1.pdf) – Short description of the file  
+- [**File 2**](your-folder/your-file-2.xlsx) – Short description of the file  
+
+> 🚀 *More files coming soon!*
 
 ## Contact
 You can reach me at:
