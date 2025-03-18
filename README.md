@@ -13,10 +13,10 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 ## Resources
 Here are some of my publicly available files:
 
-- [**File 1**](your-folder/your-file-1.pdf) – Short description of the file  
+- [**File 1**](your-folder/your-file-1.pdf) – All the visualizations I created in the Map category (Shots, Assists, Heatmaps)
 - [**File 2**](your-folder/your-file-2.xlsx) – Short description of the file  
 
-> 🚀 *More files coming soon!*
+> *More files coming soon!*
 
 ## Contact
 You can reach me at:
