@@ -13,6 +13,7 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 ## Resources
 Here are some of my publicly available files:
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/)
+- 📂 [**Others Viz Folder**](https://gibranium.github.io/others/)
 
 > *More files coming soon!*
 
