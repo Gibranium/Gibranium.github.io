@@ -18,4 +18,4 @@ You can reach me at:
 - [LinkedIn](https://www.linkedin.com/in/davide-gualano-a2454b187)
 - [X](https://x.com/gualanodavide)
 - [Bluesky](https://bsky.app/profile/gualanodavide.bsky.social)
-- Email: [davide.gualano@outloo.it]
+- davide.gualano@outlook.it
