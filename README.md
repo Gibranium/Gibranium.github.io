@@ -12,10 +12,7 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 
 ## Resources
 Here are some of my publicly available files:
-- 📂 [**View All Resources**](https://gibranium.github.io/maps/)
-
-- [**Match Report 2024**](https://github.com/gibranium/gibranium.github.io/blob/main/resources/match_report_2024.pdf) – A deep dive into key statistics  
-- [**Excel Dataset**](https://github.com/gibranium/gibranium.github.io/blob/main/resources/dataset.xlsx) – Raw football analytics data  
+- 📂 [**Maps Folder**](https://gibranium.github.io/maps/)
 
 > *More files coming soon!*
 
