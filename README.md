@@ -14,7 +14,12 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 Here are some of my publicly available files:
 
 - [**File 1**](your-folder/your-file-1.pdf) – All the visualizations I created in the Map category (Shots, Assists, Heatmaps)
-- [**File 2**](your-folder/your-file-2.xlsx) – Short description of the file  
+- [**File 2**](your-folder/your-file-2.xlsx) – Short description of the file
+
+- 📂 [**View All Resources**](https://github.com/gibranium/gibranium.github.io/tree/main/resources)
+
+- [**Match Report 2024**](https://github.com/gibranium/gibranium.github.io/blob/main/resources/match_report_2024.pdf) – A deep dive into key statistics  
+- [**Excel Dataset**](https://github.com/gibranium/gibranium.github.io/blob/main/resources/dataset.xlsx) – Raw football analytics data  
 
 > *More files coming soon!*
 
