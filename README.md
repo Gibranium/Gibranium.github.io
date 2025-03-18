@@ -11,7 +11,7 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 - Clear communication and exposition of complex findings
 
 ## Resources
-Here are my publicly available files:
+Here are you can find both examples visualizations and jupyter notebooks of what I worked on until now:
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/)
 - 📂 [**Others Viz Folder**](https://gibranium.github.io/others/)
 
