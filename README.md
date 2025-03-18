@@ -2,7 +2,7 @@
 Welcome to my personal portfolio! I'm a Master's in Cultural Anthropology and Ethnology from Università degli Studi di Torino with a passion for Football – or Soccer if you prefer – data analysis.
 
 ## About Me
-I have experience in data analysis with Python that I showcase in my [newsletter](https://the-cutback.beehiiv.com/). This expertise led to a freelance opportunity at DAZN Italy as a data editor, where I [brief description of your work].
+I have experience in data analysis with Python that I showcase in my [newsletter](https://the-cutback.beehiiv.com/). This expertise led to a freelance opportunity at DAZN Italy as a data editor, where I used Excel and Opta Pressbox as primary tools to gave Pre, Live and Post match analytics support to all of the broadcasting team of the production I worked on.
 
 ## Skills
 - Python for data analysis
