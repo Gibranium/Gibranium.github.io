@@ -13,7 +13,7 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 ## Resources
 Explore my Jupyter notebooks and visualization examples from past projects:
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/) (Shot Map, Assist Map, Heat Map)
-- 📂 [**Others Viz Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting)
+- 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting)
 
 - 📔 [**Defensive Value Project**](https://gibranium.github.io/defensivevalue/) (All the work related to the production of the defensive value metric, used to rate defending)
 
