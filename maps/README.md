@@ -10,3 +10,5 @@ Here you can find all my maps visualizations files and examples.
 ## Assist Map
 - [Jupyter Notebook](https://gibranium.github.io/maps/ASSIST-MAP.html)
 - Example:
+
+![Pedri-assistmap-2425](https://github.com/user-attachments/assets/54e53bff-405e-4ac7-8b6b-324851b28000)
