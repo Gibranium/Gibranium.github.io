@@ -14,6 +14,7 @@ I have experience in data analysis with Python that I showcase in my [newsletter
 Explore my Jupyter notebooks and visualization examples from past projects:
 - 📔 [**Defensive Value Project**](https://gibranium.github.io/defensivevalue/) (All the work related to the production of the defensive value metric, used to rate defending)
 - 📔 [**Positions Clustering Project**](https://gibranium.github.io/positioncluster/) (All the work related to the production of the position feature for players)
+- 📔 [**Team Similarity Project**](https://gibranium.github.io/teamstyle/) (All the work related to the production of team similarity ratings)
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/) (Shot Map, Assist Map, Heat Map)
 - 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting)
 
