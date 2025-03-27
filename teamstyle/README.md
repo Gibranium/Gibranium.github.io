@@ -1,8 +1,8 @@
 # Team Style Similarity Project
 This was a project I built with the intent of creating ratings for team similarity to apply them in recruitment, but also to create a simple way to explore team style themselves with a widget in the notebook. To do this I leveraged on possession chain based features as a starting point for game state contextual metrics and not simple events as take ons, first third passes and so on. 
 
-- [Team Style Notebook](https://gibranium.github.io/positioncluster/STYLE-SIMILARITY-TEAMS.html)
-- [Possession Chain Notebook](https://gibranium.github.io/positioncluster/POSSESSION-CHAIN.html)
+- [Team Style Notebook](https://gibranium.github.io/teamstyle/STYLE-SIMILARITY-TEAMS.html)
+- [Possession Chain Notebook](https://gibranium.github.io/teamstyle/POSSESSION-CHAIN.html)
 - Examples:
 
 ![Example Comparison](https://github.com/user-attachments/assets/3352abb5-3e6f-4bb8-abfe-9b102b195dbe)
