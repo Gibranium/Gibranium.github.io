@@ -1,5 +1,5 @@
 # Passes related notebooks
-This is the folder in which you can find all the notebooks of my passes related notebooks, and visualizatons. 
+This folder contains all notebooks related to passes and their visualizations. 
 
 - [Pass Sonar Notebook](https://gibranium.github.io/passing/PASSES-SONAR.html)
 - Examples:
