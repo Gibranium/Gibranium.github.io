@@ -17,7 +17,7 @@ Explore my Jupyter notebooks and visualization examples from past projects:
 - 📔 [**Team Similarity Project**](https://gibranium.github.io/teamstyle/) (All the work related to the production of team similarity ratings)
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/) (Shot Map, Assist Map, Heat Map and so on...)
 - 📂 [**Passing Folder**](https://gibranium.github.io/passing/) (Pass Sonar)
-- 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting)
+- 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting, and so on...)
 
 > *More files coming soon!*
 
