@@ -12,3 +12,9 @@ Here you can find all the other visualizations files and examples.
 - Example:
   
 ![Unknown](https://github.com/user-attachments/assets/03ffad6d-2af1-4039-8504-25ac0a80a1d6)
+
+## Metric consistency
+- [Jupyter Notebook](https://gibranium.github.io/others/METRICS-CONSISTENCY.html)
+- Example:
+
+![Juventusrollingmetrics](https://github.com/user-attachments/assets/5956b2e0-b2ff-45df-afd4-87d2576b4c98)
