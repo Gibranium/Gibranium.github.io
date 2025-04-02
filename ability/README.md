@@ -7,3 +7,7 @@ This folder contains all notebooks related to players ability (passing and shoot
 
 ![PassingOverperformanceGK](https://github.com/user-attachments/assets/7991ac00-458c-4ec8-9d46-c315e3d3b2cb)
 
+## Shooting ability
+- [Jupyter Notebook](https://gibranium.github.io/ability/SCORING-OVERPERFORMANCE.html)
+- Examples:
+
