@@ -18,7 +18,7 @@ Explore my Jupyter notebooks and visualization examples from past projects:
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/) (Shot Map, Assist Map, Heat Map and so on...)
 - 📂 [**Passing Folder**](https://gibranium.github.io/passing/) (Pass Sonar)
 - 📂 [**Ability Folder**](https://gibranium.github.io/ability/) (Passing and Shooting ability)
-- 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, Rest/Fatigue Effect on Shooting, and so on...)
+- 📂 [**Other Visualizations Folder**](https://gibranium.github.io/others/) (xG Trend Line, and so on...)
 
 > *More files coming soon!*
 
