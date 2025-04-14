@@ -25,8 +25,8 @@ This folder contains all notebooks related to passes and their visualizations.
 
 - Progressive example:
 
-- ![Dean Huijsen-progressive-2425](https://github.com/user-attachments/assets/0591fc8e-bc9c-4040-ac62-f65452d227a0)
+![Dean Huijsen-progressive-2425](https://github.com/user-attachments/assets/0591fc8e-bc9c-4040-ac62-f65452d227a0)
 
 - After defensive action example:
 
-- ![Dean Huijsen-passesafterdef-2425](https://github.com/user-attachments/assets/550c7af3-3630-41f7-8643-2cb3822c4351)
+![Dean Huijsen-passesafterdef-2425](https://github.com/user-attachments/assets/550c7af3-3630-41f7-8643-2cb3822c4351)
