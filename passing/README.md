@@ -17,7 +17,7 @@ This folder contains all notebooks related to passes and their visualizations.
 
 ![Passing-Performance-VS](https://github.com/user-attachments/assets/8ad3dccd-bdd2-45b8-9a47-1c36b3e960b9)
 
-## Passmaps (this could of course be modified to show carries)
+## Passmaps (this could be modified for carries, or other defintions)
 - [Jupyter Notebook](https://gibranium.github.io/passing/PASSMAPS.html)
 - Buildup example:
 
