@@ -21,12 +21,12 @@ This folder contains all notebooks related to passes and their visualizations.
 - [Jupyter Notebook](https://gibranium.github.io/passing/PASSMAPS.html)
 - Buildup example:
 
-![Dean Huijsen-buildup-2425](https://github.com/user-attachments/assets/06bc4f27-4827-4f85-ab25-8f4e40dfcf8d)
+![Dean Huijsen-buildup-2425](https://github.com/user-attachments/assets/5b88859a-c774-4fa6-bad6-020fdd8ee3ff)
 
 - Progressive example:
 
-![Dean Huijsen-progressive-2425](https://github.com/user-attachments/assets/0591fc8e-bc9c-4040-ac62-f65452d227a0)
+![Dean Huijsen-progressive-2425](https://github.com/user-attachments/assets/eded3cf6-ed11-41e2-8548-8dfc0ebe8603)
 
 - After defensive action example:
 
-![Dean Huijsen-passesafterdef-2425](https://github.com/user-attachments/assets/550c7af3-3630-41f7-8643-2cb3822c4351)
+![Dean Huijsen-passesafterdef-2425](https://github.com/user-attachments/assets/19673320-45fa-4e3c-bb73-25fbd64fdbe7)
