@@ -11,9 +11,9 @@ This folder contains all notebooks related to passes and their visualizations.
 - [Jupyter Notebook](https://gibranium.github.io/passing/PASSES-xP-PROFILING.html)
 - Examples:
 
-![PAx100](https://github.com/user-attachments/assets/eabe6681-3511-46d9-8526-c31b4c9f9640)
+![PAx100](https://github.com/user-attachments/assets/3227d7d4-2868-4227-9015-b90736f84de9)
 
-![PassingProfile](https://github.com/user-attachments/assets/c9673a1b-10cf-4d66-818f-7985fb05c9d3)
+![PassingProfile](https://github.com/user-attachments/assets/4329ff5a-02c5-4902-a8d1-c0f613608735)
 
 ![Passing-Performance-VS](https://github.com/user-attachments/assets/606c6af5-7256-4bb5-946f-64c537ed2a1f)
 
