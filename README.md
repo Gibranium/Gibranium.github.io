@@ -15,6 +15,7 @@ Explore my Jupyter notebooks and visualization examples from past projects:
 - 📔 [**Defensive Value Project**](https://gibranium.github.io/defensivevalue/) (All the work related to the production of the defensive value metric, used to rate defending)
 - 📔 [**Positions Clustering Project**](https://gibranium.github.io/positioncluster/) (All the work related to the production of the position feature for players)
 - 📔 [**Team Similarity Project**](https://gibranium.github.io/teamstyle/) (All the work related to the production of team similarity ratings)
+- 📔 [**Passing Under Pressure Proxy Notebook**](https://gibranium.github.io/underpressure/) (How to calculate player press resistance if you don't have access pressure specific data)
 - 📂 [**Maps Folder**](https://gibranium.github.io/maps/) (Shot Map, Assist Map, Heat Map and so on...)
 - 📂 [**Passing Folder**](https://gibranium.github.io/passing/) (Pass Sonar)
 - 📂 [**Ability Folder**](https://gibranium.github.io/ability/) (Passing and Shooting ability)
