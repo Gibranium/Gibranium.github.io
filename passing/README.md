@@ -36,13 +36,13 @@ We create clusters for all the passes from a specific position (in the notebook 
 - [Jupyter Notebook](https://gibranium.github.io/passing/PLAYER-PASSING-CLUSTERS.html)
 - Top 4 most played passes overall example:
 
-- ![Unknown](https://github.com/user-attachments/assets/9965a2f1-b709-4a53-aa9a-e954a401f0f9)
+![Unknown](https://github.com/user-attachments/assets/9965a2f1-b709-4a53-aa9a-e954a401f0f9)
 
 - Top 4 most played passes from specific player example:
   
 ![Rayan Cherki-passingclusters-2425](https://github.com/user-attachments/assets/50417e1f-0503-423e-8cfc-f813fb57b961)
 
 
-- Top 10 Players for specific metric that play specific position (top 10% most valuable clusters):
+- Top 10 Players for specific metric that play specific position (from top 10% most valuable clusters):
 
 ![TOP_FOR_CLUSTERS](https://github.com/user-attachments/assets/46c3e287-aebd-4b0f-8123-dd8b784fb59d)
