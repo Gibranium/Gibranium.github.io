@@ -18,3 +18,9 @@ Here you can find all the other visualizations files and examples.
 - Example:
 
 ![doublebardifferential](https://github.com/user-attachments/assets/81fecc4b-06ab-4f7e-a039-2092f8ae1e0a)
+
+## Box Entries
+- [Jupyter Notebook](https://gibranium.github.io/others/BOX-ENTRIES.html)
+- Example:
+
+![Marseille-boxentries-2425](https://github.com/user-attachments/assets/d0ebf18b-88f6-4f4c-b7eb-2628921994d1)
