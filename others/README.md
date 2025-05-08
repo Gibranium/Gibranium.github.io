@@ -24,3 +24,11 @@ Here you can find all the other visualizations files and examples.
 - Example:
 
 ![Marseille-boxentries-2425](https://github.com/user-attachments/assets/d0ebf18b-88f6-4f4c-b7eb-2628921994d1)
+
+## Receiving ability
+- [Jupyter Notebook](https://gibranium.github.io/others/RECEIVING-ABILITY.html)
+- Example:
+
+![TOP_AFTER_RECEPTIONS](https://github.com/user-attachments/assets/fe175431-0ba0-48ae-b8c4-526d37889082)
+
+![Dani Ceballos-afterreceivingmap-2425](https://github.com/user-attachments/assets/11501cac-48da-4381-9066-8b17f6c30416)
