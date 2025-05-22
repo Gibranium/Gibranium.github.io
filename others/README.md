@@ -32,3 +32,11 @@ Here you can find all the other visualizations files and examples.
 ![TOP_AFTER_RECEPTIONS](https://github.com/user-attachments/assets/fe175431-0ba0-48ae-b8c4-526d37889082)
 
 ![Dani Ceballos-afterreceivingmap-2425](https://github.com/user-attachments/assets/11501cac-48da-4381-9066-8b17f6c30416)
+
+## Dribbling from a standstill ability
+- [Jupyter Notebook](https://gibranium.github.io/others/DRIBBLING_DA_FERMO.html)
+- Example:
+
+![Lamine Yamal-standstilltakeons-2425](https://github.com/user-attachments/assets/40c2b3fe-f8fa-426d-86a8-f8525c577597)
+
+![TOP_DA_FERMO](https://github.com/user-attachments/assets/8d0e08b1-48c8-4b23-aa0e-79c8271cc36a)
