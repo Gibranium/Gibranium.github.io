@@ -4,7 +4,7 @@
 
 This repo hosts my portfolio at **[gibranium.github.io](https://gibranium.github.io)**.
 
-I'm a data analyst at **Math&Sport**, supporting **DAZN Italy**'s editorial team. On the side I write **[The Cutback](https://the-cutback.beehiiv.com/)**, where I publish recruitment-style research — transfer corridor analysis, player profiling, and metrics built from event data — with every methodology open for inspection.
+I'm a data analyst at **Math&Sport**, where we support **DAZN Italy** and other stakeholders. On the side I write **[The Cutback](https://the-cutback.beehiiv.com/)**, where I publish recruitment-style research — transfer corridor analysis, player profiling, and metrics built from event data — with every methodology open for inspection.
 
 I haven't worked inside a recruitment department yet, so I've been building one in public. Everything below is the evidence.
 
@@ -41,7 +41,7 @@ Notebooks and tools in this repo, mapped to the recruitment workflow they serve:
 ## What I work with
 
 - **Fluent:** event data — six seasons of metric building, profiling and analysis on top of it
-- **Working:** tracking data — used as validation ground truth for event-based proxies
+- **Working:** tracking data — worked with the limits of what's publicly available (in progress)
 - **Stack:** Python · pandas · scikit-learn · Streamlit · VAEP & xG modelling · data viz
 - **Background:** MA Cultural Anthropology, Università degli Studi di Torino — research methodology and a trained eye for collective behaviour, on and off the pitch
 
