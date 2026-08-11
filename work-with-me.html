@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work with me — Davide Gualano</title>
+  <meta name="description" content="Scoped recruitment and data visualisation projects for clubs, agencies and media. Fixed price, documented method, run on data you already license." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* --- Additions for this page only. Everything else inherits style.css --- */
+    .tier { border-top: 1px solid currentColor; border-color: inherit; padding: 2.4rem 0; opacity: 1; }
+    .tier:last-of-type { border-bottom: 1px solid; border-color: inherit; }
+    .tier-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.2rem; margin-bottom: 1rem; }
+    .tier-head h3 { margin: 0; flex: 1 1 14rem; }
+    .tier-price { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; }
+    .tier-time { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; opacity: .65; }
+    .tier-body { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 1.6rem 2.4rem; }
+    .tier-body ul { margin: 0; padding-left: 1.1rem; }
+    .tier-body li { margin-bottom: .35rem; }
+    .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; opacity: .6; margin: 0 0 .5rem; }
+    .proof { border: 1px solid; border-color: inherit; border-radius: 6px; padding: .9rem 1.1rem; }
+    .proof a { font-weight: 600; }
+    .steps { counter-reset: step; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.6rem; }
+    .step { counter-increment: step; }
+    .step::before { content: counter(step, decimal-leading-zero); font-family: 'IBM Plex Mono', monospace; font-size: .78rem; opacity: .55; display: block; margin-bottom: .5rem; }
+    .step h3 { margin: 0 0 .35rem; font-size: 1rem; }
+    .faq details { border-bottom: 1px solid; border-color: inherit; padding: 1.1rem 0; }
+    .faq summary { cursor: pointer; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.05rem; list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; float: right; font-weight: 500; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq p { margin: .8rem 0 0; max-width: 46rem; }
+    .note-band { border: 1px solid; border-color: inherit; border-radius: 8px; padding: 1.4rem 1.6rem; margin: 2.4rem 0 0; }
+    @media (max-width: 720px) {
+      .tier-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="inner">
+    <a class="logo" href="index.html">Davide Gualano<span>.</span></a>
+    <ul>
+      <li><a href="index.html#work">Case studies</a></li>
+      <li><a href="index.html#toolkit">Toolkit</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a class="nav-cta" href="work-with-me.html">Work with me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HEADER ── -->
+<header id="top">
+  <div class="container">
+    <p class="eyebrow mono">Services — clubs, agencies, media</p>
+    <h1>Recruitment work,<br><em>scoped and priced.</em></h1>
+    <p class="bio">
+      A recruitment question rarely needs a full-time analyst. It needs someone to take the
+      question seriously for three weeks and hand back an answer you can act on. That's what
+      I sell: a defined piece of work, a fixed price, and the method handed over with the result.
+    </p>
+    <div class="contacts">
+      <a class="btn btn-primary" href="mailto:davide.gualano@outlook.it">Book a scoping call</a>
+      <a class="btn" href="index.html#work">See the work first</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── DATA MODEL ── -->
+<section>
+  <div class="container">
+    <div class="note-band">
+      <p class="tier-label">How the data works</p>
+      <p>
+        Projects run on the data you already license — Wyscout, Opta, StatsPerform, your own
+        tracking feed. I work inside your environment, and what you're buying is the pipeline:
+        the profiling, the modelling, the visual output, documented so your staff can rerun it.
+        If you don't hold a licence, we scope to competitions with legitimately available data
+        and I'll tell you exactly what that covers before you commit.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <p class="section-label mono">What I do</p>
+    <h2 class="section-title">Four ways in</h2>
+    <p class="section-lead">
+      Each one below is a process I've already run and published in full. Follow the links —
+      the free version is the specification for the paid one.
+    </p>
+
+    <!-- 01 -->
+    <article class="tier">
+      <div class="tier-head">
+        <h3>Second opinion</h3>
+        <span class="tier-price">€700</span>
+        <span class="tier-time">1 week</span>
+      </div>
+      <div class="tier-body">
+        <div>
+          <p>
+            You have a target. Before the money moves, I stress-test him: role fit for how your
+            team actually plays, whether his output is sustainable or noise, adaptation risk from
+            his league to yours, and the comparable profiles you may be able to get cheaper.
+            You get a verdict, not a hedge.
+          </p>
+          <p class="tier-label" style="margin-top:1.2rem">You get</p>
+          <ul>
+            <li>A 6–8 page written verdict, conclusion first</li>
+            <li>Comparison set of alternative profiles</li>
+            <li>45-minute call to argue with me about it</li>
+          </ul>
+        </div>
+        <div class="proof">
+          <p class="tier-label">Already done</p>
+          <p>
+            <a href="https://the-cutback.beehiiv.com/p/immobile-bologna-transfer-analysis-35-year-old-mistake" target="_blank" rel="noopener">Immobile to Bologna →</a>
+            — a single signing, a clear verdict, the squad-context reasoning behind it.
+          </p>
+          <p>
+            <a href="https://the-cutback.beehiiv.com/p/serie-a-transfers-review-one-season-later" target="_blank" rel="noopener">And the same calls graded a season later →</a>
+            — eighteen verdicts checked against what happened, misses included.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="tier">
+      <div class="tier-head">
+        <h3>Shortlist brief</h3>
+        <span class="tier-price">€2,500</span>
+        <span class="tier-time">2–3 weeks</span>
+      </div>
+      <div class="tier-body">
+        <div>
+          <p>
+            The full commission for one position. We define the profile together, then I filter
+            across the leagues your budget and style actually reach, cluster candidates into
+            data-defined roles, rank them on what matters for that role, and land on a
+            recommendation with every step exposed.
+          </p>
+          <p class="tier-label" style="margin-top:1.2rem">You get</p>
+          <ul>
+            <li>Ranked shortlist of 5–8 names</li>
+            <li>Full profile pages for the top three</li>
+            <li>Methodology appendix your analysts can audit</li>
+            <li>Presentation to your recruitment staff</li>
+          </ul>
+        </div>
+        <div class="proof">
+          <p class="tier-label">Already done</p>
+          <p>
+            <a href="https://the-cutback.beehiiv.com/p/juventus-midfielder-recruitment-data-2026" target="_blank" rel="noopener">Finding Juventus' missing midfielder →</a>
+            — the identical process, start to finish, on a squad I don't work for.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="tier">
+      <div class="tier-head">
+        <h3>Market map</h3>
+        <span class="tier-price">€3,800</span>
+        <span class="tier-time">3–4 weeks</span>
+      </div>
+      <div class="tier-body">
+        <div>
+          <p>
+            Not who to sign — where to shop. I rate stylistic similarity between your side and
+            every club in the markets you can realistically buy from, then measure how often
+            transfers along each corridor have actually worked. The output is a buying strategy,
+            not a single name, and it stays useful for several windows.
+          </p>
+          <p class="tier-label" style="margin-top:1.2rem">You get</p>
+          <ul>
+            <li>Corridor risk report across your reachable markets</li>
+            <li>Ranked target leagues and feeder clubs</li>
+            <li>A scoring framework your staff keep and rerun</li>
+          </ul>
+        </div>
+        <div class="proof">
+          <p class="tier-label">Already done</p>
+          <p>
+            <a href="https://the-cutback.beehiiv.com/p/transfer-success-rates-by-league-football-data" target="_blank" rel="noopener">Which leagues actually produce successful transfers? →</a>
+            — six seasons of event data, corridor by corridor.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="tier">
+      <div class="tier-head">
+        <h3>Visualisation &amp; tooling</h3>
+        <span class="tier-price">€400/day</span>
+        <span class="tier-time">scoped per job</span>
+      </div>
+      <div class="tier-body">
+        <div>
+          <p>
+            The thing I do best, and do daily. Recruitment dashboards your scouts will actually
+            open, match and player visuals for editorial or presentation, or a custom metric for
+            something the standard data misses — built, validated, and documented so it survives
+            after handover.
+          </p>
+          <p class="tier-label" style="margin-top:1.2rem">Typical jobs</p>
+          <ul>
+            <li>Internal scouting tool your staff can query</li>
+            <li>Editorial and broadcast graphics</li>
+            <li>A bespoke metric, with validation against an external benchmark</li>
+          </ul>
+        </div>
+        <div class="proof">
+          <p class="tier-label">Already done</p>
+          <p>
+            <a href="https://setpiecesanalysis.streamlit.app" target="_blank" rel="noopener">Throw-in analysis app →</a>
+            — a research pipeline turned into something non-analysts can use.
+          </p>
+          <p>
+            <a href="https://gibranium.github.io/maps/" target="_blank" rel="noopener">Visual gallery →</a>
+            — shot maps, pass sonars, carrying maps, xG trends.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section>
+  <div class="container">
+    <p class="section-label mono">Process</p>
+    <h2 class="section-title">No surprises, either direction</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Scoping call</h3>
+        <p>Thirty minutes, free. You describe the question. I tell you whether the data can answer it — including when it can't.</p>
+      </div>
+      <div class="step">
+        <h3>Written scope</h3>
+        <p>Deliverable, timeline and price, fixed in writing before anything starts. 50% up front.</p>
+      </div>
+      <div class="step">
+        <h3>Mid-point check</h3>
+        <p>One review while there's still time to redirect. Nothing lands as a surprise at the end.</p>
+      </div>
+      <div class="step">
+        <h3>Handover</h3>
+        <p>Presentation to your staff, and the method documented so it doesn't leave when I do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label mono">Before you ask</p>
+    <h2 class="section-title">The questions I'd ask too</h2>
+
+    <details>
+      <summary>Have you worked inside a club?</summary>
+      <p>
+        No. Which is why I publish the method instead of asserting the experience.
+      </p>
+      <p>
+        The recruitment work is entirely my own: six seasons of publicly available event data turned
+        into corridor models, role clustering, custom metrics, complete mock commissions — and a
+        public audit of my own transfer calls a season on, misses included. All of it at The Cutback,
+        with the method open.
+      </p>
+      <p>
+        What my client work gives me is production discipline: visual and editorial output delivered
+        on deadline, at scale, for audiences that notice mistakes. The two streams don't share data.
+        They share standards.
+      </p>
+      <p>
+        You can judge the quality of both before paying for a minute of it. Very few people you could
+        hire will offer you that.
+      </p>
+    </details>
+
+    <details>
+      <summary>Whose data do we use?</summary>
+      <p>
+        Yours. Clubs and agencies already licence a feed that covers the players they'd realistically
+        sign, and I work inside it. Published work on The Cutback runs on publicly available data —
+        which means a paid project has deeper coverage than anything you can read for free.
+      </p>
+    </details>
+
+    <details>
+      <summary>How fast can you start?</summary>
+      <p>
+        I work as a freelance analyst with existing commitments, so I take a limited number of
+        projects at a time and quote timelines I can actually hold. If the window is tight, say so
+        on the call and I'll tell you honestly whether it fits.
+      </p>
+    </details>
+
+    <details>
+      <summary>What if the data can't answer the question?</summary>
+      <p>
+        Then I say so on the scoping call, before you've spent anything. Event data is very good at
+        some questions and poor at others — defenders and goalkeepers remain genuinely hard, and I'd
+        rather tell you that up front than deliver a confident answer built on thin evidence.
+      </p>
+    </details>
+
+    <details>
+      <summary>Do you work in English?</summary>
+      <p>Yes. Italian native, English professional, written and spoken.</p>
+    </details>
+
+    <details>
+      <summary>Do you take retainers?</summary>
+      <p>
+        After a first project, yes — around €1,800 a month for ongoing shortlist and analysis support
+        through a window. Better for both of us to start with something scoped.
+      </p>
+    </details>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-pitch">
+      <h2>Tell me the position<br><em>and the constraint.</em></h2>
+      <p>Thirty minutes and I'll tell you whether the data can answer it.</p>
+      <a class="btn btn-light" href="mailto:davide.gualano@outlook.it">davide.gualano@outlook.it</a>
+    </div>
+    <div class="footer-meta">
+      <p class="mono">Davide Gualano — Turin, Italy<br>Freelance football data analyst</p>
+      <p class="footer-links">
+        <a href="https://the-cutback.beehiiv.com/" target="_blank" rel="noopener">The Cutback</a>
+        <a href="https://www.linkedin.com/in/davide-gualano-a2454b187" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/gualanodavide" target="_blank" rel="noopener">X</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
