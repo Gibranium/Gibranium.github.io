@@ -49,5 +49,5 @@ Notebooks and tools in this repo, mapped to the recruitment workflow they serve:
 
 Looking for a first role in **football recruitment analytics** — full-time or project-based.
 
-- 📧 davide.gualano@outlook.it
+- 📧 davide@davidegualano.com
 - [LinkedIn](https://www.linkedin.com/in/davide-gualano-a2454b187) · [X](https://x.com/gualanodavide) · [Bluesky](https://bsky.app/profile/gualanodavide.bsky.social) · [The Cutback](https://the-cutback.beehiiv.com/)
