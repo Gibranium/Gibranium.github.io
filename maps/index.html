@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual gallery — Davide Gualano</title>
+  <meta name="description" content="Football data visualisations built in Python: pitch maps, passing, carrying and team trend work, each with the notebook behind it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .jump { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+    .jump a { border: 1px solid; border-color: inherit; border-radius: 999px; padding: .35rem 1rem;
+               font-family: 'IBM Plex Mono', monospace; font-size: .78rem; text-decoration: none; color: inherit; }
+    .jump a:hover { background-color: rgba(127,127,127,.12); }
+    .proj { border-top: 1px solid; border-color: inherit; padding: 2.2rem 0; }
+    .proj:last-child { border-bottom: 1px solid; border-color: inherit; }
+    .proj-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.4rem; }
+    .proj-head h3 { margin: 0 0 .3rem; }
+    .proj-head p { margin: 0; max-width: 46rem; }
+    .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: 1.6rem 1.2rem; align-items: start; }
+    .shot { margin: 0; }
+    .shot img { display: block; width: 100%; height: auto; border: 1px solid; border-color: inherit; border-radius: 6px; }
+    .shot a:focus-visible img { outline: 2px solid currentColor; outline-offset: 2px; }
+    .shot figcaption { margin-top: .5rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; opacity: .65; }
+    .hosting { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; opacity: .6; }
+    @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="inner">
+    <a class="logo" href="../index.html">Davide Gualano<span>.</span></a>
+    <ul>
+      <li><a href="../index.html#work">Case studies</a></li>
+      <li><a href="../index.html#toolkit">Toolkit</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a class="nav-cta" href="../work-with-me.html">Work with me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <p class="eyebrow mono">Visualizations</p>
+    <h1>Visual gallery</h1>
+    <p class="lead">
+      Everything here is built in Python with mplsoccer and matplotlib, from event data.
+      Each project shows the output first and links to the notebook that produced it,
+      so you can read the code as easily as the picture.
+    </p>
+    <div class="jump">
+      <a href="#maps">Maps</a>
+      <a href="#passing">Passing</a>
+      <a href="#carries">Carries</a>
+      <a href="#others">Other work</a>
+    </div>
+  </div>
+</div>
+
+  <section id="maps">
+    <div class="container">
+      <p class="section-label mono">Maps — 4 examples</p>
+      <h2 class="section-title">Pitch maps for shots, assists and positioning.</h2>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Shot map</h3>
+            <p>Every shot a player takes in a season, placed on the pitch, sized by xG and coloured by outcome.</p>
+          </div>
+          <a class="btn" href="../maps/SHOT-MAP.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/c1d48b62-740a-4a62-ab95-a60dd9fde6b5" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/c1d48b62-740a-4a62-ab95-a60dd9fde6b5" alt="Randal Kolo Muani, shots, 24/25" loading="lazy">
+            </a>
+            <figcaption>Randal Kolo Muani, shots, 24/25</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Assist map</h3>
+            <p>Where a player's assists are delivered from and where they arrive.</p>
+          </div>
+          <a class="btn" href="../maps/ASSIST-MAP.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/8cc1e43d-fa50-439a-930d-4c3345b95ded" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/8cc1e43d-fa50-439a-930d-4c3345b95ded" alt="Pedri, assists, 24/25" loading="lazy">
+            </a>
+            <figcaption>Pedri, assists, 24/25</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Heat maps</h3>
+            <p>Positional density split by offensive and defensive actions. The base spatial function reused across several of the projects below.</p>
+          </div>
+          <a class="btn" href="../maps/HEATMAP.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/e4aaa67b-abaf-4955-bfb0-95106b288830" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/e4aaa67b-abaf-4955-bfb0-95106b288830" alt="Offensive heat map" loading="lazy">
+            </a>
+            <figcaption>Offensive heat map</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/65a78179-a24e-4679-8f90-00754c366821" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/65a78179-a24e-4679-8f90-00754c366821" alt="Defensive heat map" loading="lazy">
+            </a>
+            <figcaption>Defensive heat map</figcaption>
+          </figure>
+        </div>
+      </article>    </div>
+  </section>
+  <section id="passing">
+    <div class="container">
+      <p class="section-label mono">Passing — 10 examples</p>
+      <h2 class="section-title">Sonars, expected passes, passmaps and pass clustering.</h2>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Pass sonar</h3>
+            <p>Average length and frequency of a player's passes by direction, in one shape.</p>
+          </div>
+          <a class="btn" href="../passing/PASSES-SONAR.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/70214ba4-48c1-4167-b974-e65c7b036d6e" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/70214ba4-48c1-4167-b974-e65c7b036d6e" alt="Angelo Stiller, pass sonar, 24/25" loading="lazy">
+            </a>
+            <figcaption>Angelo Stiller, pass sonar, 24/25</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Expected passes (xP)</h3>
+            <p>Completion measured against the difficulty of the passes attempted: who beats their expected numbers, by how much, and against whom.</p>
+          </div>
+          <a class="btn" href="../passing/PASSES-xP-PROFILING.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/02cc9fce-71c9-4395-a151-33008d2d5f7b" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/02cc9fce-71c9-4395-a151-33008d2d5f7b" alt="Completion against expected completion, league-wide" loading="lazy">
+            </a>
+            <figcaption>Completion against expected completion, league-wide</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/11d2ddef-0590-491c-bd3e-c861065235ad" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/11d2ddef-0590-491c-bd3e-c861065235ad" alt="Passing profile for one player" loading="lazy">
+            </a>
+            <figcaption>Passing profile for one player</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/014ada44-3b16-4ab2-8d59-c9be96c5d653" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/014ada44-3b16-4ab2-8d59-c9be96c5d653" alt="Two players compared on the same axes" loading="lazy">
+            </a>
+            <figcaption>Two players compared on the same axes</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Passmaps</h3>
+            <p>The same player seen three ways: build-up passes, progressive passes, and passes played straight after a defensive action.</p>
+          </div>
+          <a class="btn" href="../passing/PASSMAPS.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/99f841c1-9c6b-4492-86b9-f00eeab1ad84" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/99f841c1-9c6b-4492-86b9-f00eeab1ad84" alt="Dean Huijsen, build-up passes" loading="lazy">
+            </a>
+            <figcaption>Dean Huijsen, build-up passes</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/0e53f2f6-cdcb-4464-95b8-0316c9b7bc45" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/0e53f2f6-cdcb-4464-95b8-0316c9b7bc45" alt="Dean Huijsen, progressive passes" loading="lazy">
+            </a>
+            <figcaption>Dean Huijsen, progressive passes</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/c2ddc214-d7be-4942-90a8-2ab26e69ac2e" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/c2ddc214-d7be-4942-90a8-2ab26e69ac2e" alt="Dean Huijsen, passes after a defensive action" loading="lazy">
+            </a>
+            <figcaption>Dean Huijsen, passes after a defensive action</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Passing clusters</h3>
+            <p>Every pass from a position clustered into repeatable types, so players can be ranked on the clusters that actually carry value.</p>
+          </div>
+          <a class="btn" href="../passing/PLAYER-PASSING-CLUSTERS.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/9965a2f1-b709-4a53-aa9a-e954a401f0f9" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/9965a2f1-b709-4a53-aa9a-e954a401f0f9" alt="The four most played clusters for a position" loading="lazy">
+            </a>
+            <figcaption>The four most played clusters for a position</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/50417e1f-0503-423e-8cfc-f813fb57b961" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/50417e1f-0503-423e-8cfc-f813fb57b961" alt="Rayan Cherki's four most played clusters" loading="lazy">
+            </a>
+            <figcaption>Rayan Cherki's four most played clusters</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/46c3e287-aebd-4b0f-8123-dd8b784fb59d" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/46c3e287-aebd-4b0f-8123-dd8b784fb59d" alt="Top ten players in the most valuable clusters" loading="lazy">
+            </a>
+            <figcaption>Top ten players in the most valuable clusters</figcaption>
+          </figure>
+        </div>
+      </article>    </div>
+  </section>
+  <section id="carries">
+    <div class="container">
+      <p class="section-label mono">Carries — 3 examples</p>
+      <h2 class="section-title">Ball carrying, mapped and measured.</h2>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Carry maps</h3>
+            <p>Where a player carries the ball, overall and when the carry moves play forward.</p>
+          </div>
+          <a class="btn" href="../carries/CARRIES-MAPS.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/353d5e6c-70c8-4eb5-a57d-084483f29777" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/353d5e6c-70c8-4eb5-a57d-084483f29777" alt="Tino Anjorin, progressive carries" loading="lazy">
+            </a>
+            <figcaption>Tino Anjorin, progressive carries</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/4682fda8-0c39-4db6-9593-029cf1f4398c" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/4682fda8-0c39-4db6-9593-029cf1f4398c" alt="Tino Anjorin, all carries" loading="lazy">
+            </a>
+            <figcaption>Tino Anjorin, all carries</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Carry output</h3>
+            <p>What those carries produce once the player gives the ball up.</p>
+          </div>
+          <a class="btn" href="../carries/CARRIES-PRODUCTION.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/8af89100-e908-49a5-9a48-27ffdb4516b6" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/8af89100-e908-49a5-9a48-27ffdb4516b6" alt="Tino Anjorin, what his carries produce" loading="lazy">
+            </a>
+            <figcaption>Tino Anjorin, what his carries produce</figcaption>
+          </figure>
+        </div>
+      </article>    </div>
+  </section>
+  <section id="others">
+    <div class="container">
+      <p class="section-label mono">Other work — 8 examples</p>
+      <h2 class="section-title">Trends, consistency, box entries, receiving and take-ons.</h2>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>xG difference trend</h3>
+            <p>Rolling xG for and against across a season, so form is separated from results.</p>
+          </div>
+          <a class="btn" href="../others/xgtrendline.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/151e64bb-a3f9-497e-9241-64887d156e25" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/151e64bb-a3f9-497e-9241-64887d156e25" alt="Liverpool, rolling xG difference" loading="lazy">
+            </a>
+            <figcaption>Liverpool, rolling xG difference</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Metric consistency</h3>
+            <p>Rolling values of a chosen metric, to show whether a team's level holds or swings.</p>
+          </div>
+          <a class="btn" href="../others/METRICS-CONSISTENCY.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/5956b2e0-b2ff-45df-afd4-87d2576b4c98" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/5956b2e0-b2ff-45df-afd4-87d2576b4c98" alt="Juventus, rolling metric values" loading="lazy">
+            </a>
+            <figcaption>Juventus, rolling metric values</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Two-season differential</h3>
+            <p>One team's metrics compared across two seasons, gains and losses side by side.</p>
+          </div>
+          <a class="btn" href="../others/DOUBLE-BAR-DIFFERENTIAL.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/81fecc4b-06ab-4f7e-a039-2092f8ae1e0a" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/81fecc4b-06ab-4f7e-a039-2092f8ae1e0a" alt="One team across two seasons" loading="lazy">
+            </a>
+            <figcaption>One team across two seasons</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Box entries</h3>
+            <p>How a team gets the ball into the penalty area, by route and by volume.</p>
+          </div>
+          <a class="btn" href="../others/BOX-ENTRIES.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/d0ebf18b-88f6-4f4c-b7eb-2628921994d1" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/d0ebf18b-88f6-4f4c-b7eb-2628921994d1" alt="Marseille, box entries, 24/25" loading="lazy">
+            </a>
+            <figcaption>Marseille, box entries, 24/25</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Receiving ability</h3>
+            <p>What players do in the seconds after they receive the ball, as a leaderboard and as a map.</p>
+          </div>
+          <a class="btn" href="../others/RECEIVING-ABILITY.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/fe175431-0ba0-48ae-b8c4-526d37889082" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/fe175431-0ba0-48ae-b8c4-526d37889082" alt="Top players after receiving" loading="lazy">
+            </a>
+            <figcaption>Top players after receiving</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/11501cac-48da-4381-9066-8b17f6c30416" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/11501cac-48da-4381-9066-8b17f6c30416" alt="Dani Ceballos, after-reception map" loading="lazy">
+            </a>
+            <figcaption>Dani Ceballos, after-reception map</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <div>
+            <h3>Take-ons from a standstill</h3>
+            <p>Dribbles started with no run-up, the harder version of the skill, plus who does it best.</p>
+          </div>
+          <a class="btn" href="../others/DRIBBLING_DA_FERMO.html">Open the notebook</a>
+        </div>
+        <div class="shots">
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/40c2b3fe-f8fa-426d-86a8-f8525c577597" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/40c2b3fe-f8fa-426d-86a8-f8525c577597" alt="Lamine Yamal, take-ons from a standstill" loading="lazy">
+            </a>
+            <figcaption>Lamine Yamal, take-ons from a standstill</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="https://github.com/user-attachments/assets/8d0e08b1-48c8-4b23-aa0e-79c8271cc36a" target="_blank" rel="noopener">
+              <img src="https://github.com/user-attachments/assets/8d0e08b1-48c8-4b23-aa0e-79c8271cc36a" alt="Top players for standstill take-ons" loading="lazy">
+            </a>
+            <figcaption>Top players for standstill take-ons</figcaption>
+          </figure>
+        </div>
+      </article>    </div>
+  </section>
+<div class="container">
+  <footer class="site-footer">
+    <div class="copy">
+      <strong>Davide Gualano</strong> — Data Analyst at Math&amp;Sport<br>
+      <span class="hosting">Example images are served from the GitHub repository behind this site.</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/davide-gualano-a2454b187" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/gualanodavide" target="_blank" rel="noopener">X</a>
+      <a href="mailto:davide.gualano@outlook.it">Email</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
