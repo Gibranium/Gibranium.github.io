@@ -8,6 +8,4 @@ One-page site for Davide Gualano, football recruitment analysis (GitHub Pages, c
   swap it for Formspree: set the form's `action` to the Formspree URL, `method="POST"`, and remove the submit handler
   in `script.js`.
 
-Placeholders to fill before launch are marked `[X]` in `index.html`.
-
 On 15 December, when "Which transfers work? Take three" is out, swap every `transfer-success-rates-by-league-v2` link in `index.html` for `https://the-cutback.beehiiv.com/p/which-transfers-work-take-three`. The hero's 43/35/22 split comes from that piece.
