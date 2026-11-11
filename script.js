@@ -1,4 +1,4 @@
-// davidegualano.com — scrollytelling for the Second opinion story, the two data graphics, and the brief form.
+// davidegualano.com — hero dots, scrollytelling for the Second opinion story, the live price lookup and the brief form.
 (function () {
   const SVG = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent, text) => {
@@ -8,6 +8,86 @@
     if (parent) parent.appendChild(n);
     return n;
   };
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // hero: 13,765 transfers, one dot each. They start as one block (every signing looks the same on the day)
+  // and sort into the three outcomes. Shares are the published ones: 42.8 / 34.7 / the rest.
+  const canvas = document.querySelector('.dots');
+  if (canvas && canvas.getContext) {
+    const N = 13765;
+    const met = Math.round(N * 0.428), out = Math.round(N * 0.347);
+    const groups = [met, out, N - met - out];
+    const colours = ['#2A52B0', '#A8231C', '#8A8380'];
+    const NEUTRAL = '#3A3533', GAP = 10, DURATION = 2200;
+    const ctx = canvas.getContext('2d');
+    const split = document.querySelector('.hero .split');
+    let dots = [], cell = 4, cols = 1, t = still ? 1 : 0, started = false, t0 = 0;
+
+    function layout() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const room = w - 2 * GAP;
+      cell = Math.sqrt(room * h / N);
+      let rows, gcols;
+      for (;;) {                                   // shrink the cell until every group's columns fit the width
+        rows = Math.max(1, Math.floor(h / cell));
+        gcols = groups.map(n => Math.ceil(n / rows));
+        if (gcols.reduce((a, b) => a + b, 0) * cell <= room) break;
+        cell *= 0.995;
+      }
+      cols = gcols.reduce((a, b) => a + b, 0);
+      dots = [];
+      let col0 = 0;
+      groups.forEach((n, g) => {
+        for (let i = 0; i < n; i++) {
+          const c = col0 + Math.floor(i / rows), r = i % rows;
+          dots.push({ x: c * cell + cell / 2, y: r * cell + cell / 2, g, d: 0.5 * (c / cols) + 0.12 * Math.random() });
+        }
+        col0 += gcols[g];
+      });
+      draw();
+    }
+
+    function draw() {
+      const w = canvas.clientWidth, h = canvas.clientHeight, r = cell * 0.36;
+      const ease = t < 1 ? 1 - Math.pow(1 - t, 3) : 1;
+      ctx.clearRect(0, 0, w, h);
+      const paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D()];   // neutral, then the three outcomes
+      for (const p of dots) {
+        const x = p.x + p.g * GAP * ease;
+        const path = paths[t >= p.d + 0.25 ? p.g + 1 : 0];
+        path.moveTo(x + r, p.y);
+        path.arc(x, p.y, r, 0, 6.2832);
+      }
+      ctx.fillStyle = NEUTRAL; ctx.fill(paths[0]);
+      colours.forEach((c, i) => { ctx.fillStyle = c; ctx.fill(paths[i + 1]); });
+    }
+
+    function frame(now) {
+      if (!t0) t0 = now;
+      t = Math.min(1, (now - t0) / DURATION);
+      draw();
+      if (t > 0.55 && split) split.classList.add('is-on');
+      if (t < 1) requestAnimationFrame(frame);
+    }
+
+    layout();
+    if (still) { if (split) split.classList.add('is-on'); }
+    else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => {
+        if (es[0].isIntersecting && !started) { started = true; io.disconnect(); setTimeout(() => requestAnimationFrame(frame), 500); }
+      }, { threshold: 0.35 });
+      io.observe(canvas);
+    } else { t = 1; draw(); if (split) split.classList.add('is-on'); }
+    let rz;
+    window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(layout, 120); });
+  } else {
+    const split = document.querySelector('.hero .split');
+    if (split) split.classList.add('is-on');
+  }
 
   // frame 3: 100 squares, Championship strikers' first season after the move (240 moves)
   const waffle = document.querySelector('.waffle');
@@ -21,7 +101,7 @@
     }
   }
 
-  // frame 4: fair price and worth on a log scale, €2m to €50m
+  // frame 5: fair price and worth on a log scale, €2m to €50m
   const range = document.querySelector('.range');
   if (range) {
     const lo = Math.log(2), hi = Math.log(50);
@@ -31,7 +111,7 @@
     el('line', { x1: x(4), x2: x(30), y1: 20, y2: 20, class: 'bar bar-price' }, range);
     el('circle', { cx: x(11), cy: 20, r: 9, class: 'dot' }, range);
     el('text', { x: 40, y: 64, class: 'lbl muted' }, range, 'Transfermarkt');
-    el('circle', { cx: x(20), cy: 84, r: 7, class: 'dot dot-worth' }, range);
+    el('circle', { cx: x(20), cy: 84, r: 7, class: 'dot-worth' }, range);
     el('line', { x1: 40, x2: 360, y1: 116, y2: 116, class: 'axis' }, range);
     el('text', { x: 40, y: 140, class: 'tick' }, range, 'cheaper');
     el('text', { x: 360, y: 140, class: 'tick', 'text-anchor': 'end' }, range, 'dearer');
@@ -54,23 +134,171 @@
     frames.classList.add('no-scrolly');
   }
 
-  // the brief: builds an email to Davide with the answers filled in
+  // price lookup: reads the price app's own published file, so a data refresh pushed to the app shows up here too.
+  // Columns used: player, team, league, role, age, minutes, season, worth(_low/_high), price(_low/_high), in € million.
+  const DATA_URL = 'https://raw.githubusercontent.com/Gibranium/what-would-he-cost/main/data/players.csv';
+  const SEASON = '2025/26';
+  const section = document.getElementById('price');
+  if (section) {
+    const $ = id => document.getElementById(id);
+    const q = $('lk-q'), list = $('lk-list'), meta = $('lk-meta'), chart = $('lk-chart'), brief = $('lk-brief');
+    let rows = null, loading = false, shown = [], active = -1, current = null;
+
+    const eur = x => x >= 100 ? '€' + Math.round(x).toLocaleString('en') + 'm' : x >= 10 ? '€' + x.toFixed(0) + 'm'
+      : x >= 1 ? '€' + x.toFixed(1) + 'm' : '€' + Math.round(x * 1000).toLocaleString('en') + 'k';
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\u0131/g, 'i').replace(/\u00f8/g, 'o').replace(/\u0142/g, 'l').replace(/\u0111/g, 'd').replace(/\u00e6/g, 'ae').replace(/\u00df/g, 'ss');
+
+    function parseCSV(text) {
+      const out = []; let row = [], cur = '', inq = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (inq) {
+          if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else inq = false; }
+          else cur += c;
+        } else if (c === '"') inq = true;
+        else if (c === ',') { row.push(cur); cur = ''; }
+        else if (c === '\n') { row.push(cur); out.push(row); row = []; cur = ''; }
+        else if (c !== '\r') cur += c;
+      }
+      if (cur || row.length) { row.push(cur); out.push(row); }
+      return out;
+    }
+
+    function fail() {
+      meta.innerHTML = 'The prices didn\'t load. <a href="https://what-would-he-cost.streamlit.app">Open the price app</a> instead.';
+      $('lk-card').hidden = true;
+    }
+
+    function load() {
+      if (rows || loading) return;
+      loading = true;
+      fetch(DATA_URL).then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }).then(text => {
+        const t = parseCSV(text), head = t[0], ix = {};
+        head.forEach((h, i) => ix[h] = i);
+        const need = ['player', 'team', 'league', 'role', 'age', 'minutes', 'season', 'worth', 'worth_low', 'worth_high', 'price', 'price_low', 'price_high'];
+        if (need.some(k => !(k in ix))) throw new Error('columns');
+        const num = ['age', 'minutes', 'worth', 'worth_low', 'worth_high', 'price', 'price_low', 'price_high'];
+        rows = [];
+        for (let i = 1; i < t.length; i++) {
+          const a = t[i];
+          if (a.length < head.length || a[ix.season] !== SEASON) continue;
+          const r = {};
+          for (const k of need) r[k] = a[ix[k]];
+          for (const k of num) r[k] = +r[k];
+          if (!(r.price > 0) || !(r.price_low > 0) || !(r.worth_low > 0)) continue;
+          r.key = norm(r.player + ' ' + r.team);
+          rows.push(r);
+        }
+        if (!rows.length) throw new Error('empty');
+        rows.sort((a, b) => b.price - a.price);
+        const leagues = new Set(rows.map(r => r.league)).size;
+        meta.textContent = rows.length.toLocaleString('en') + ' players in ' + leagues + ' leagues, ' + SEASON + ' season, priced at the summer 2026 market. The card shows the dearest player in the model until you pick one.';
+        show(rows.find(r => r.minutes >= 900) || rows[0]);
+        if (q.value.trim()) suggest();
+      }).catch(fail);
+    }
+
+    function show(r) {
+      current = r;
+      $('lk-who').textContent = [r.player, r.team, r.league, r.role, Math.round(r.age), r.minutes.toLocaleString('en') + ' min (' + r.season + ')'].join(' · ');
+      $('lk-big').textContent = eur(r.price);
+      $('lk-rng').textContent = '80% range: ' + eur(r.price_low) + ' – ' + eur(r.price_high);
+      brief.textContent = 'Get the full read on ' + r.player + ', €200';
+      while (chart.firstChild) chart.removeChild(chart.firstChild);
+      const W = Math.max(280, Math.round(chart.clientWidth || 520)), L = 88, R = W - 14;
+      chart.setAttribute('viewBox', '0 0 ' + W + ' 150');
+      const lo = Math.max(0.01, Math.min(r.price_low, r.worth_low) * 0.8), hi = Math.max(r.price_high, r.worth_high) * 1.2;
+      const x = v => L + (R - L) * (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo));
+      [['Fair price', 'r-price', r.price_low, r.price, r.price_high, 34], ['Worth', 'r-worth', r.worth_low, r.worth, r.worth_high, 78]].forEach(([name, cls, a, m, b, y]) => {
+        el('text', { x: 0, y: y + 5, class: 't' }, chart, name);
+        el('line', { x1: x(a), x2: x(b), y1: y, y2: y, class: cls }, chart);
+        el('circle', { cx: x(m), cy: y, r: 8, class: 'c' }, chart);
+      });
+      el('line', { x1: L, x2: R, y1: 112, y2: 112, class: 'ax' }, chart);
+      let last = -99;
+      for (const v of [0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10, 25, 50, 100, 250, 500, 1000]) {
+        if (v < lo || v > hi || x(v) - last < 52) continue;
+        last = x(v);
+        el('line', { x1: x(v), x2: x(v), y1: 112, y2: 117, class: 'ax' }, chart);
+        el('text', { x: x(v), y: 134, class: 'tk', 'text-anchor': 'middle' }, chart, v >= 1 ? '€' + v + 'm' : '€' + v * 1000 + 'k');
+      }
+    }
+
+    function close() { list.hidden = true; q.setAttribute('aria-expanded', 'false'); active = -1; }
+
+    function suggest() {
+      const words = norm(q.value).split(/\s+/).filter(Boolean);
+      list.textContent = '';
+      if (!rows || !words.length) { close(); return; }
+      shown = [];
+      for (const r of rows) {
+        if (words.every(w => r.key.includes(w))) { shown.push(r); if (shown.length === 8) break; }
+      }
+      if (!shown.length) {
+        const li = document.createElement('li'); li.textContent = 'No player or team matches. Check the spelling.'; li.setAttribute('aria-disabled', 'true'); list.appendChild(li);
+      }
+      shown.forEach((r, i) => {
+        const li = document.createElement('li'), s = document.createElement('span');
+        li.setAttribute('role', 'option'); li.id = 'lk-o' + i; li.dataset.i = i;
+        li.textContent = r.player; s.textContent = r.team + ' · ' + eur(r.price); li.appendChild(s);
+        list.appendChild(li);
+      });
+      active = -1; list.hidden = false; q.setAttribute('aria-expanded', 'true');
+    }
+
+    function pick(i) {
+      const r = shown[i]; if (!r) return;
+      show(r); q.value = r.player; close();
+    }
+    function mark(i) {
+      const items = list.querySelectorAll('[role=option]'); if (!items.length) return;
+      active = (i + items.length) % items.length;
+      items.forEach((n, k) => n.setAttribute('aria-selected', k === active ? 'true' : 'false'));
+      q.setAttribute('aria-activedescendant', 'lk-o' + active);
+      items[active].scrollIntoView({ block: 'nearest' });
+    }
+
+    q.addEventListener('focus', load);
+    q.addEventListener('input', () => { load(); suggest(); });
+    q.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) suggest(); else mark(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); mark(active - 1); }
+      else if (e.key === 'Enter') { e.preventDefault(); pick(active >= 0 ? active : 0); }
+      else if (e.key === 'Escape') close();
+    });
+    list.addEventListener('mousedown', e => { const li = e.target.closest('[role=option]'); if (li) { e.preventDefault(); pick(+li.dataset.i); } });
+    q.addEventListener('blur', () => setTimeout(close, 150));
+
+    // the card's button carries the player into the brief form
+    brief.addEventListener('click', () => {
+      const form = document.getElementById('brief'); if (!form || !current) return;
+      form.elements.need.value = 'Second opinion';
+      form.elements.target.value = current.player + ' (' + current.team + ', ' + current.league + ')';
+    });
+
+    let lkrz;
+    window.addEventListener('resize', () => { clearTimeout(lkrz); lkrz = setTimeout(() => { if (current) show(current); }, 150); });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); load(); } }, { rootMargin: '900px 0px' });
+      io.observe(section);
+    } else load();
+  }
+
+  // the brief. With a form endpoint in data-endpoint (Formspree or similar) it is sent from the page;
+  // without one, or if sending fails, it opens the visitor's email app with the answers filled in.
   const form = document.getElementById('brief');
   if (form) {
-    form.addEventListener('submit', ev => {
-      ev.preventDefault();
-      const msg = form.querySelector('.form-msg');
-      if (!form.checkValidity()) {
-        const first = form.querySelector(':invalid');
-        msg.textContent = 'Fill in the fields marked as missing, then send again.';
-        form.classList.add('tried');
-        if (first) first.focus();
-        return;
-      }
-      const f = new FormData(form);
+    const endpoint = (form.dataset.endpoint || '').trim();
+    const how = document.getElementById('brief-how');
+    if (endpoint && how) how.textContent = 'Your brief comes straight to my inbox.';
+    const msg = form.querySelector('.form-msg');
+
+    const mail = f => {
       const body = [
         'Name and role: ' + f.get('name'),
         'Club / agency / outlet: ' + f.get('org'),
+        'Email: ' + f.get('email'),
         'What I need: ' + f.get('need'),
         'Position or player, and league: ' + f.get('target'),
         'When: ' + f.get('when'),
@@ -81,6 +309,26 @@
       const subject = 'Brief: ' + f.get('need') + ' (' + f.get('org') + ')';
       window.location.href = 'mailto:davide@davidegualano.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       msg.textContent = 'Your email app should be open with the brief filled in. If it isn\'t, write to davide@davidegualano.com.';
+    };
+
+    form.addEventListener('submit', ev => {
+      ev.preventDefault();
+      if (!form.checkValidity()) {
+        const first = form.querySelector(':invalid');
+        msg.textContent = 'Fill in the fields marked as missing, then send again.';
+        form.classList.add('tried');
+        if (first) first.focus();
+        return;
+      }
+      const f = new FormData(form);
+      if (!endpoint) { mail(f); return; }
+      f.append('_subject', 'Brief: ' + f.get('need') + ' (' + f.get('org') + ')');
+      const button = form.querySelector('button[type=submit]');
+      button.disabled = true; msg.textContent = 'Sending…';
+      fetch(endpoint, { method: 'POST', body: f, headers: { Accept: 'application/json' } })
+        .then(r => { if (!r.ok) throw new Error(r.status); msg.textContent = 'Sent. I\'ll reply personally, usually with a couple of questions before we talk.'; form.reset(); form.classList.remove('tried'); })
+        .catch(() => mail(f))
+        .then(() => { button.disabled = false; });
     });
   }
 })();

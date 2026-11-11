@@ -8,9 +8,20 @@
 <meta property="og:title" content="Davide Gualano · Football recruitment analysis">
 <meta property="og:description" content="Everything I'd build for you, I've already built in public.">
 <meta property="og:url" content="https://davidegualano.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://davidegualano.com/images/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://davidegualano.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/icon-180.png">
+<meta name="theme-color" content="#D7D1CF">
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Davide Gualano","jobTitle":"Football data analyst","url":"https://davidegualano.com/","email":"mailto:davide@davidegualano.com","address":{"@type":"PostalAddress","addressLocality":"Turin","addressCountry":"IT"},"sameAs":["https://www.linkedin.com/in/davide-gualano-a2454b187","https://x.com/gualanodavide","https://bsky.app/profile/gualanodavide.bsky.social","https://the-cutback.beehiiv.com/"]}
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,10 +32,11 @@
   <a class="nav-name" href="#top">Davide Gualano</a>
   <nav aria-label="Sections">
     <a href="#services">Services</a>
+    <a href="#price">Price a player</a>
     <a href="#proof">Proof</a>
-    <a href="#method">Method</a>
+    <a href="method.html">Method</a>
     <a href="#cutback">The Cutback</a>
-    <a class="nav-book" href="#book">Book a call</a>
+    <a class="nav-book" href="#book">Send a brief</a>
   </nav>
 </header>
 
@@ -32,21 +44,26 @@
 
 <!-- 1. Hero: the problem and the promise -->
 <section class="hero" id="top">
-  <h1>Most transfers that fail, fail before anyone judges the player. He never wins his place.</h1>
-  <p class="hero-lede">I check whether a signing is likely to hold up in your league, and I tell you where the data can't see. Everything I'd build for you, I've already built in public.</p>
-  <div class="hero-actions">
-    <a class="btn btn-solid" href="#services">Check a transfer or build a shortlist</a>
-    <a class="btn btn-line" href="#method">See the method</a>
+  <div class="hero-text">
+    <h1>Most transfers that fail, fail before anyone judges the player. He never wins his place.</h1>
+    <p class="hero-lede">I check whether a signing is likely to hold up in your league, and I tell you where the data can't see. Everything I'd build for you, I've already built in public.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#services">Check a transfer or build a shortlist</a>
+      <a class="btn btn-line" href="#price">Price a player now</a>
+    </div>
+    <p class="hero-prices"><a href="#services">Second opinion <b>€200</b></a><a href="#services">Shortlist brief <b>€600</b></a><a href="#services">Retainer <b>from €400 a month</b></a></p>
+    <p class="hero-media">Editors and brands: <a href="#media">analysis pieces and graphics</a>.</p>
   </div>
-  <p class="hero-media">Editors and brands: <a href="#media">analysis pieces and graphics</a>.</p>
 
   <figure class="hero-fig" aria-labelledby="hero-cap">
-    <div class="split" role="img" aria-label="13,765 transfers: 43% met expectation, 35% never won a regular place, 22% played but fell short">
+    <p class="dots-head"><b>13,765</b> transfers. One dot each.</p>
+    <canvas class="dots" role="img" aria-label="13,765 transfers, one dot each: 43% held their level, 35% never won a regular place, 22% played but fell short"></canvas>
+    <div class="split">
       <span class="split-met" style="--w:42.8"><b>43%</b> held their level</span>
       <span class="split-out" style="--w:34.7"><b>35%</b> never won a regular place</span>
       <span class="split-low" style="--w:22.4"><b>22%</b> played, fell short</span>
     </div>
-    <figcaption id="hero-cap">13,765 completed moves in 18 leagues since 2020/21, judged on the first season after the move. Re-run on my rebuilt pipeline, November 2026. Of the moves that didn't work, six in ten failed on minutes, not on talent.</figcaption>
+    <figcaption id="hero-cap">Completed moves in 18 leagues since 2020/21, judged on the first season after the move. Re-run on my rebuilt pipeline, November 2026. Of the moves that didn't work, six in ten failed on minutes, not on talent.</figcaption>
   </figure>
 </section>
 
@@ -70,22 +87,28 @@
           <rect x="155" y="20" width="90" height="26" class="line"/>
           <ellipse cx="200" cy="92" rx="70" ry="56" class="zone"/>
           <ellipse cx="200" cy="80" rx="34" ry="26" class="zone-core"/>
-          <text x="200" y="168" class="lbl" text-anchor="middle">Where his actions happen,</text>
-          <text x="200" y="188" class="lbl" text-anchor="middle">not where the team sheet puts him</text>
+          <text x="200" y="292" class="lbl" text-anchor="middle">Where his actions happen,</text>
+          <text x="200" y="314" class="lbl" text-anchor="middle">not where the team sheet puts him</text>
         </svg>
 
         <!-- frame 2: what the profile compares -->
         <svg class="frame" data-frame="2" viewBox="0 0 400 400">
-          <text x="40" y="60" class="h">Against his role, in his league</text>
+          <text x="40" y="46" class="h">Against his role, in his league</text>
+          <text x="200" y="72" class="tick" text-anchor="middle">role average</text>
           <text x="40" y="100" class="lbl">Chances he gets, and from where</text>
-          <text x="40" y="128" class="lbl">Shooting and finishing skill</text>
-          <text x="40" y="156" class="lbl">Link play and passing skill</text>
-          <text x="40" y="184" class="lbl">Carrying and beating a man</text>
-          <text x="40" y="212" class="lbl">Defensive actions and pressure</text>
-          <text x="40" y="240" class="lbl">How it has moved, season by season</text>
-          <line x1="40" y1="272" x2="360" y2="272" class="rule"/>
-          <text x="40" y="308" class="lbl muted">Then the same profile translated</text>
-          <text x="40" y="332" class="lbl muted">to the league he'd be joining</text>
+          <line x1="40" y1="113" x2="360" y2="113" class="pbar-bg"/><line x1="40" y1="113" x2="309" y2="113" class="pbar pbar-hi"/><line x1="200" y1="104" x2="200" y2="122" class="mid"/>
+          <text x="40" y="142" class="lbl">Shooting and finishing skill</text>
+          <line x1="40" y1="155" x2="360" y2="155" class="pbar-bg"/><line x1="40" y1="155" x2="251" y2="155" class="pbar"/><line x1="200" y1="146" x2="200" y2="164" class="mid"/>
+          <text x="40" y="184" class="lbl">Link play and passing skill</text>
+          <line x1="40" y1="197" x2="360" y2="197" class="pbar-bg"/><line x1="40" y1="197" x2="171" y2="197" class="pbar"/><line x1="200" y1="188" x2="200" y2="206" class="mid"/>
+          <text x="40" y="226" class="lbl">Carrying and beating a man</text>
+          <line x1="40" y1="239" x2="360" y2="239" class="pbar-bg"/><line x1="40" y1="239" x2="274" y2="239" class="pbar"/><line x1="200" y1="230" x2="200" y2="248" class="mid"/>
+          <text x="40" y="268" class="lbl">Defensive actions and pressure</text>
+          <line x1="40" y1="281" x2="360" y2="281" class="pbar-bg"/><line x1="40" y1="281" x2="104" y2="281" class="pbar pbar-lo"/><line x1="200" y1="272" x2="200" y2="290" class="mid"/>
+          <line x1="40" y1="312" x2="360" y2="312" class="rule"/>
+          <text x="40" y="340" class="lbl muted">Then the same profile translated</text>
+          <text x="40" y="361" class="lbl muted">to the league he'd be joining</text>
+          <text x="40" y="390" class="tick">An illustration of the shape, not a player.</text>
         </svg>
 
         <!-- frame 3: the move's base rate (Championship strikers, 240 moves) -->
@@ -166,6 +189,31 @@
   </div>
 </section>
 
+<!-- 2b. Live price lookup: reads the price app's published players.csv -->
+<section class="lookup-sec" id="price" aria-labelledby="price-title">
+  <div class="price-text">
+    <h2 id="price-title">What would he cost? Try it.</h2>
+    <p>Type a player. You get one fair price and its range, learned from 3,593 fees clubs actually paid. It's the price part of a Second opinion, and it's free.</p>
+    <div class="lookup">
+      <label for="lk-q">Find a player or a team</label>
+      <input id="lk-q" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. Yildiz, Coventry" role="combobox" aria-expanded="false" aria-controls="lk-list" aria-autocomplete="list">
+      <ul id="lk-list" role="listbox" hidden></ul>
+    </div>
+    <p class="lk-meta muted" id="lk-meta">Loading the model's prices…</p>
+  </div>
+  <div class="price-card" id="lk-card" aria-live="polite">
+    <p class="lk-who" id="lk-who">&nbsp;</p>
+    <p class="lk-big" id="lk-big">€–</p>
+    <p class="lk-rng" id="lk-rng">&nbsp;</p>
+    <svg class="lk-chart" id="lk-chart" viewBox="0 0 520 150" height="150" role="img" aria-label="Fair price and worth, each with its 80% range, on a log scale"></svg>
+    <p class="lk-note" id="lk-note">The fair price is what clubs have paid for players like him: same worth, age, role, league and situation. Worth is what his profile alone is valued at.</p>
+    <div class="lk-actions">
+      <a class="btn btn-solid" id="lk-brief" href="#book">Get the full read on him, €200</a>
+      <a class="lk-app" href="https://what-would-he-cost.streamlit.app">Open the full app</a>
+    </div>
+  </div>
+</section>
+
 <!-- 3. Services as problems -->
 <section class="services" id="services" aria-labelledby="services-title">
   <h2 id="services-title">What I can do for your club</h2>
@@ -232,8 +280,8 @@
     </article>
     <article>
       <h3>Which moves work</h3>
-      <p>13,765 transfers judged against players who stayed, so a "success" means more than a good season. Version two retracted one of my own earlier claims.</p>
-      <a href="https://the-cutback.beehiiv.com/p/transfer-success-rates-by-league-v2">Read the piece</a>
+      <p>13,765 transfers judged on the first season after the move. The full write-up is out in December. The September version is already public: it added a control group and retracted one of my own earlier claims.</p>
+      <a href="https://the-cutback.beehiiv.com/p/transfer-success-rates-by-league-v2">Read the September version</a>
     </article>
   </div>
 </section>
@@ -251,28 +299,11 @@
   </dl>
 </section>
 
-<!-- 6. Method, for hiring teams -->
-<section class="method" id="method" aria-labelledby="method-title">
-  <h2 id="method-title">The method, for analysts and hiring teams</h2>
-  <p class="intro">I'd like to work on recruitment models and the visual side of how clubs read them. In October 2026 I rebuilt my whole event-data pipeline after finding bugs in the coordinate frame, the match clock and the VAEP formula, and re-ran everything on top of it. My transfer-corridor piece retracted one of its own March claims. That's how I'd work on your data too.</p>
-
-  <ul class="methods">
-    <li><h3>Transfer success by league</h3><p>Six seasons of moves against an intra-league control group: which leagues' players hold their level, and why most failures are about minutes.</p><a href="https://the-cutback.beehiiv.com/p/transfer-success-rates-by-league-v2">Read</a></li>
-    <li><h3>Fair transfer price</h3><p>Worth learned from market values, then calibrated on 3,593 real fees: selling league, age, window, football inflation. Backtested window by window.</p><a href="https://what-would-he-cost.streamlit.app">Use the app</a></li>
-    <li><h3>Position clustering</h3><p>Roles from where and how players act, not from team sheets: the role behind every comparison I make.</p></li>
-    <li><h3>Team style similarity</h3><p>Which teams play like yours, from possession and pressing maps, so needs are measured against real peers.</p></li>
-    <li><h3>Dixon-Coles ratings</h3><p>Team strength from my own xG model, comparable across leagues: how I translate a player's numbers from one league to another.</p></li>
-    <li><h3>Defensive value</h3><p>What a defender's zone concedes, from convex hulls and VAEP. Event data struggles with defending, and the method says where.</p></li>
-    <li><h3>Standstill take-ons</h3><p>Two proxies for beating a man from a standing start. The simple one was the more repeatable.</p><a href="https://the-cutback.beehiiv.com/p/simple-vs-complex-standstill-take-on-proxy">Read</a></li>
-    <li><h3>Explosive carries</h3><p>An acceleration proxy from event data, compared against Gradient's tracking data: the La Liga outliers largely match.</p><a href="https://the-cutback.beehiiv.com/p/explosive-carries-proxy-event-data-la-liga">Read</a></li>
-    <li><h3>Passing skill</h3><p>A Bayesian model of how much better than expected a player passes, with shooters and keepers in the same framework.</p></li>
-    <li><h3>Tracking data</h3><p>Peak velocity, and why one number isn't enough; off-ball runs three seconds before the pass. Both on Gradient's free World Cup 2022 data.</p></li>
-  </ul>
-
-  <div class="hire">
-    <p>Stack: Python, pandas, scikit-learn, Streamlit, VAEP and xG modelling, data visualisation. Hudl StatsBomb certifications in recruitment and video analysis. Italian and English.</p>
-    <a class="btn btn-line" href="https://www.linkedin.com/in/davide-gualano-a2454b187">My experience on LinkedIn</a>
-  </div>
+<!-- 6. Method: the full list lives on method.html -->
+<section class="method-band" id="method" aria-labelledby="method-title">
+  <h2 id="method-title">For analysts and hiring teams</h2>
+  <p>Every model behind this page is written up: transfer success, fair price, roles, team style, team ratings, defensive value, skill models and tracking work. So is the October 2026 rebuild of the whole pipeline, with what it changed.</p>
+  <a class="btn btn-line" href="method.html">See the method</a>
 </section>
 
 <!-- 7. Media -->
@@ -284,7 +315,7 @@
     <a class="btn btn-line" href="mailto:davide@davidegualano.com?subject=Media%20quote">Ask for a quote</a>
   </div>
   <figure class="media-fig">
-    <img src="images/viz/championship-competitiveness.webp" alt="Championship teams rated by a Dixon-Coles xG model, shown as a strip from weakest to strongest" loading="lazy" width="1200" height="800">
+    <img src="images/viz/championship-competitiveness.webp" alt="Championship teams rated by a Dixon-Coles xG model, shown as a strip from weakest to strongest" loading="lazy" width="1800" height="631">
     <figcaption>Championship competitiveness from my Dixon-Coles ratings. Personal project.</figcaption>
   </figure>
 </section>
@@ -315,11 +346,12 @@
   <div class="book-text">
     <h2 id="book-title">Send me the brief</h2>
     <p>If you're not sure which one you need, send me the problem in two lines. I'll tell you honestly whether I can help, and if I can't.</p>
-    <p class="muted">Sending opens your email app with your answers filled in. I'll reply personally, usually with a couple of questions before we talk.</p>
+    <p class="muted"><span id="brief-how">Sending opens your email app with your answers filled in.</span> I'll reply personally, usually with a couple of questions before we talk.</p>
   </div>
-  <form class="brief" id="brief" novalidate>
+  <form class="brief" id="brief" novalidate action="https://formspree.io/f/xjywvoqq" method="POST" data-endpoint="https://formspree.io/f/xjywvoqq">
     <label>Name and role<input name="name" required autocomplete="name"></label>
     <label>Club, agency or outlet<input name="org" required autocomplete="organization"></label>
+    <label>Your email, so I can reply<input name="email" type="email" required autocomplete="email"></label>
     <label>What do you need?
       <select name="need" required>
         <option value="">Choose one</option>
@@ -329,7 +361,7 @@
         <option>Something else</option>
       </select>
     </label>
-    <label>The position or player, and the league<input name="target" required></label>
+    <label>The position or player, and the league<input name="target" id="brief-target" required></label>
     <fieldset>
       <legend>When do you need it?</legend>
       <label class="opt"><input type="radio" name="when" value="This window" required>This window</label>
@@ -343,6 +375,7 @@
       </select>
     </label>
     <label>Anything else I should know (optional)<textarea name="notes" rows="3"></textarea></label>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
     <button class="btn btn-solid" type="submit">Send the brief</button>
     <p class="form-msg" role="status" aria-live="polite"></p>
   </form>
