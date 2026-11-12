@@ -56,12 +56,12 @@
   </div>
 
   <figure class="hero-fig" aria-labelledby="hero-cap">
-    <p class="dots-head"><b>13,765</b> transfers. One dot each.</p>
-    <canvas class="dots" role="img" aria-label="13,765 transfers, one dot each: 43% held their level, 35% never won a regular place, 22% played but fell short"></canvas>
+    <p class="dots-head"><b>13,908</b> transfers. One dot each.</p>
+    <canvas class="dots" role="img" aria-label="13,908 transfers, one dot each: 43% held their level, 34% never won a regular place, 23% played but fell short"></canvas>
     <div class="split">
-      <span class="split-met" style="--w:42.8"><b>43%</b> held their level</span>
-      <span class="split-out" style="--w:34.7"><b>35%</b> never won a regular place</span>
-      <span class="split-low" style="--w:22.4"><b>22%</b> played, fell short</span>
+      <span class="split-met" style="--w:43.4"><b>43%</b> held their level</span>
+      <span class="split-out" style="--w:33.6"><b>34%</b> never won a regular place</span>
+      <span class="split-low" style="--w:23.0"><b>23%</b> played, fell short</span>
     </div>
     <figcaption id="hero-cap">Completed moves in 18 leagues since 2020/21, judged on the first season after the move. Re-run on my rebuilt pipeline, November 2026. Of the moves that didn't work, six in ten failed on minutes, not on talent.</figcaption>
   </figure>
@@ -111,11 +111,11 @@
           <text x="40" y="390" class="tick">An illustration of the shape, not a player.</text>
         </svg>
 
-        <!-- frame 3: the move's base rate (Championship strikers, 240 moves) -->
+        <!-- frame 3: the move's base rate (strikers leaving the Championship, 241 moves) -->
         <svg class="frame" data-frame="3" viewBox="0 0 400 400">
           <g class="waffle" transform="translate(70 40)"></g>
-          <text x="70" y="330" class="lbl"><tspan class="k k-met">■</tspan> 45% held their level</text>
-          <text x="70" y="352" class="lbl"><tspan class="k k-out">■</tspan> 35% never won a regular place</text>
+          <text x="70" y="330" class="lbl"><tspan class="k k-met">■</tspan> 47% held their level</text>
+          <text x="70" y="352" class="lbl"><tspan class="k k-out">■</tspan> 33% never won a regular place</text>
           <text x="70" y="374" class="lbl"><tspan class="k k-low">■</tspan> 20% played, fell short</text>
         </svg>
 
@@ -139,7 +139,7 @@
           <text x="40" y="96" class="lbl muted">and how it sits against Transfermarkt</text>
           <g class="range" transform="translate(0 140)"></g>
           <text x="40" y="350" class="lbl muted">What clubs have paid for players like him,</text>
-          <text x="40" y="372" class="lbl muted">from 3,593 real fees</text>
+          <text x="40" y="372" class="lbl muted">from 3,226 real fees</text>
         </svg>
 
         <!-- frame 6: verdict -->
@@ -170,7 +170,7 @@
       </li>
       <li class="step" data-step="3">
         <h3>How his move has gone for others</h3>
-        <p>Every league move has a track record. For strikers leaving the Championship, 45% of 240 held their level in their first season and 35% never won a regular place. That's the base rate: a prior, not a verdict on the player.</p>
+        <p>Every league move has a track record. For strikers leaving the Championship, 47% of 241 held their level in their first season and 33% never won a regular place. That's the base rate: a prior, not a verdict on the player.</p>
       </li>
       <li class="step" data-step="4">
         <h3>What the data can't see</h3>
@@ -193,7 +193,7 @@
 <section class="lookup-sec" id="price" aria-labelledby="price-title">
   <div class="price-text">
     <h2 id="price-title">What would he cost? Try it.</h2>
-    <p>Type a player. You get one fair price and its range, learned from 3,593 fees clubs actually paid. It's the price part of a Second opinion, and it's free.</p>
+    <p>Type a player. You get a fair price and its range, plus what a Premier League club would pay and what anyone else would, learned from 3,226 fees clubs actually paid. It's the price part of a Second opinion, and it's free.</p>
     <div class="lookup">
       <label for="lk-q">Find a player or a team</label>
       <input id="lk-q" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. Yildiz, Coventry" role="combobox" aria-expanded="false" aria-controls="lk-list" aria-autocomplete="list">
@@ -205,8 +205,9 @@
     <p class="lk-who" id="lk-who">&nbsp;</p>
     <p class="lk-big" id="lk-big">€–</p>
     <p class="lk-rng" id="lk-rng">&nbsp;</p>
+    <p class="lk-two" id="lk-two" hidden></p>
     <svg class="lk-chart" id="lk-chart" viewBox="0 0 520 150" height="150" role="img" aria-label="Fair price and worth, each with its 80% range, on a log scale"></svg>
-    <p class="lk-note" id="lk-note">The fair price is what clubs have paid for players like him: same worth, age, role, league and situation. Worth is what his profile alone is valued at.</p>
+    <p class="lk-note" id="lk-note">The fair price is what clubs have paid for players like him: same worth, age, role, league and situation. Premier League clubs pay more for the same player, so it is the mix of the two prices by how often players like him go there. Worth is what his profile alone is valued at.</p>
     <div class="lk-actions">
       <a class="btn btn-solid" id="lk-brief" href="#book">Get the full read on him, €200</a>
       <a class="lk-app" href="https://what-would-he-cost.streamlit.app">Open the full app</a>
@@ -280,7 +281,7 @@
     </article>
     <article>
       <h3>Which moves work</h3>
-      <p>13,765 transfers judged on the first season after the move. The full write-up is out in December. The September version is already public: it added a control group and retracted one of my own earlier claims.</p>
+      <p>13,908 transfers judged on the first season after the move. The full write-up is out in December. The September version is already public: it added a control group and retracted one of my own earlier claims.</p>
       <a href="https://the-cutback.beehiiv.com/p/transfer-success-rates-by-league-v2">Read the September version</a>
     </article>
   </div>

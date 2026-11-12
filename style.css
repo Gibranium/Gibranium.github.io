@@ -159,6 +159,7 @@ section { padding: clamp(64px, 11vw, 140px) var(--gutter); }
 .lk-chart .r-price { stroke: #E46A5E; stroke-width: 12; stroke-linecap: round; }
 .lk-chart .r-worth { stroke: #8A8380; stroke-width: 12; stroke-linecap: round; }
 .lk-chart .c { fill: #F3EFED; stroke: var(--ink); stroke-width: 3; }
+.lk-two { font-size: .98rem; color: #F2ECE9; margin: -.5rem 0 1rem; }
 .lk-note { font-size: .98rem; color: #C9C1BD; }
 .lk-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 1.2rem; }
 .lk-actions .btn-solid { background: #F3EFED; color: var(--ink); border-color: #F3EFED; }

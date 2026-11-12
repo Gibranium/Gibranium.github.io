@@ -10,12 +10,12 @@
   };
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // hero: 13,765 transfers, one dot each. They start as one block (every signing looks the same on the day)
-  // and sort into the three outcomes. Shares are the published ones: 42.8 / 34.7 / the rest.
+  // hero: 13,908 transfers, one dot each. They start as one block (every signing looks the same on the day)
+  // and sort into the three outcomes. Shares (run of 12 Nov 2026): 43.4 met / 33.6 not selected or too few minutes / the rest played and fell short.
   const canvas = document.querySelector('.dots');
   if (canvas && canvas.getContext) {
-    const N = 13765;
-    const met = Math.round(N * 0.428), out = Math.round(N * 0.347);
+    const N = 13908;
+    const met = Math.round(N * 0.434), out = Math.round(N * 0.336);
     const groups = [met, out, N - met - out];
     const colours = ['#2A52B0', '#A8231C', '#8A8380'];
     const NEUTRAL = '#3A3533', GAP = 10, DURATION = 2200;
@@ -89,10 +89,10 @@
     if (split) split.classList.add('is-on');
   }
 
-  // frame 3: 100 squares, Championship strikers' first season after the move (240 moves)
+  // frame 3: 100 squares, Championship strikers' first season after the move (strikers leaving it, 241 moves)
   const waffle = document.querySelector('.waffle');
   if (waffle) {
-    const parts = [['met', 45], ['out', 35], ['low', 20]];
+    const parts = [['met', 47], ['out', 33], ['low', 20]];
     let i = 0;
     for (const [cls, n] of parts) {
       for (let j = 0; j < n; j++, i++) {
@@ -185,6 +185,7 @@
           const r = {};
           for (const k of need) r[k] = a[ix[k]];
           for (const k of num) r[k] = +r[k];
+          for (const k of ['price_pl', 'price_other', 'pl_chance']) r[k] = k in ix ? +a[ix[k]] : NaN;   // the two prices behind the fair one (from 12 Nov 2026)
           if (!(r.price > 0) || !(r.price_low > 0) || !(r.worth_low > 0)) continue;
           r.key = norm(r.player + ' ' + r.team);
           rows.push(r);
@@ -203,6 +204,13 @@
       $('lk-who').textContent = [r.player, r.team, r.league, r.role, Math.round(r.age), r.minutes.toLocaleString('en') + ' min (' + r.season + ')'].join(' · ');
       $('lk-big').textContent = eur(r.price);
       $('lk-rng').textContent = '80% range: ' + eur(r.price_low) + ' – ' + eur(r.price_high);
+      const two = $('lk-two');
+      if (two) {
+        const ok = r.price_pl > 0 && r.price_other > 0 && Math.abs(r.price_pl / r.price_other - 1) > 0.005;
+        two.hidden = !ok;
+        if (ok) two.textContent = 'If a Premier League club buys: ' + eur(r.price_pl) + ' · anyone else: ' + eur(r.price_other)
+          + ' · players like him go to a Premier League club ' + Math.round(r.pl_chance * 100) + '% of the time';
+      }
       brief.textContent = 'Get the full read on ' + r.player + ', €200';
       while (chart.firstChild) chart.removeChild(chart.firstChild);
       const W = Math.max(280, Math.round(chart.clientWidth || 520)), L = 88, R = W - 14;
