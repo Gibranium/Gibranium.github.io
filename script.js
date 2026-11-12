@@ -106,30 +106,45 @@
     const NEUTRAL = '#3A3533', GAP = 10, DURATION = 2200;
     const ctx = canvas.getContext('2d');
     const split = document.querySelector('.hero .split');
-    let dots = [], cell = 4, cols = 1, t = still ? 1 : 0, started = false, t0 = 0;
+    let dots = [], cell = 4, sw = 1, sh = 1, cols = 1, gap = GAP, key = '', t = still ? 1 : 0, started = false, t0 = 0;
 
+    // The canvas is drawn in whole screen pixels. Its size on the page is set to an exact number of them, so the
+    // browser never rescales it (that was the blur at some window widths and zoom levels), and the dots sit on a
+    // whole-pixel grid, so every dot has the same shape. All coordinates below are screen pixels, not CSS pixels.
     function layout() {
-      const w = canvas.clientWidth, h = canvas.clientHeight;
-      if (!w || !h) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const room = w - 2 * GAP;
-      cell = Math.sqrt(room * h / N);
-      let rows, gcols;
-      for (;;) {                                   // shrink the cell until every group's columns fit the width
-        rows = Math.max(1, Math.floor(h / cell));
-        gcols = groups.map(n => Math.ceil(n / rows));
-        if (gcols.reduce((a, b) => a + b, 0) * cell <= room) break;
-        cell *= 0.995;
+      const dpr = window.devicePixelRatio || 1;
+      const k = canvas.parentNode.getBoundingClientRect().width.toFixed(2) + '@' + dpr;
+      if (k === key) return;                                   // same room, same screen: nothing to redo
+      canvas.style.width = canvas.style.height = '';           // back to the stylesheet's size (full width, its aspect ratio)
+      const box = canvas.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      key = k;
+      const W = Math.floor(box.width * dpr), Hmax = Math.floor(box.height * dpr);
+      gap = Math.round(GAP * dpr);
+      const room = W - 2 * gap;
+      // the cell is a whole number of pixels each way; when a square one would leave too much of the box empty
+      // (small screens, ordinary-density displays) it may be one pixel wider than tall, or the reverse
+      const fits = (cw, ch, rows) => rows >= 1 && groups.reduce((a, n) => a + Math.ceil(n / rows), 0) * cw <= room;
+      let cw = 1, ch = 1;
+      search: for (let c = Math.ceil(Math.sqrt(room * Hmax / N)) + 1; c >= 1; c--) {
+        for (const [a, b] of [[c, c], [c, c - 1], [c - 1, c]]) {
+          if (a >= 1 && b >= 1 && fits(a, b, Math.floor(Hmax / b))) { cw = a; ch = b; break search; }
+        }
       }
+      let rows = Math.max(1, Math.floor(Hmax / ch));
+      while (rows > 1 && fits(cw, ch, rows - 1)) rows--;       // fewer rows = wider blocks: fill the width, give back the spare height
+      cell = Math.min(cw, ch); sw = Math.max(1, cw - 1); sh = Math.max(1, ch - 1);
+      const H = rows * ch;
+      canvas.width = W; canvas.height = H;
+      canvas.style.width = W / dpr + 'px'; canvas.style.height = H / dpr + 'px';
+      const gcols = groups.map(n => Math.ceil(n / rows));
       cols = gcols.reduce((a, b) => a + b, 0);
       dots = [];
       let col0 = 0;
       groups.forEach((n, g) => {
         for (let i = 0; i < n; i++) {
-          const c = col0 + Math.floor(i / rows), r = i % rows;
-          dots.push({ x: c * cell + cell / 2, y: r * cell + cell / 2, g, d: 0.5 * (c / cols) + 0.12 * Math.random() });
+          const cc = col0 + Math.floor(i / rows), r = i % rows;
+          dots.push({ x: cc * cw + cw / 2, y: r * ch + ch / 2, g, d: 0.5 * (cc / cols) + 0.12 * Math.random() });
         }
         col0 += gcols[g];
       });
@@ -137,15 +152,15 @@
     }
 
     function draw() {
-      const w = canvas.clientWidth, h = canvas.clientHeight, r = cell * 0.36;
+      const r = cell * 0.36;
       const ease = t < 1 ? 1 - Math.pow(1 - t, 3) : 1;
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       const paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D()];   // neutral, then the three outcomes
       for (const p of dots) {
-        const x = p.x + p.g * GAP * ease;
+        const x = p.x + p.g * gap * ease;
         const path = paths[t >= p.d + 0.25 ? p.g + 1 : 0];
-        path.moveTo(x + r, p.y);
-        path.arc(x, p.y, r, 0, 6.2832);
+        if (cell < 3) path.rect(Math.round(x - sw / 2), Math.round(p.y - sh / 2), sw, sh);   // too small for a circle: a square
+        else { path.moveTo(x + r, p.y); path.arc(x, p.y, r, 0, 6.2832); }
       }
       ctx.fillStyle = NEUTRAL; ctx.fill(paths[0]);
       colours.forEach((c, i) => { ctx.fillStyle = c; ctx.fill(paths[i + 1]); });
@@ -168,7 +183,10 @@
       io.observe(canvas);
     } else { t = 1; draw(); if (split) split.classList.add('is-on'); }
     let rz;
-    window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(layout, 120); });
+    const relayout = () => { clearTimeout(rz); rz = setTimeout(layout, 120); };
+    window.addEventListener('resize', relayout);
+    // the room can change without the window changing (fonts arriving, a scrollbar appearing): watch the figure itself
+    if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(canvas.parentNode);
   } else {
     const split = document.querySelector('.hero .split');
     if (split) split.classList.add('is-on');

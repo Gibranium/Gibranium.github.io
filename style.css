@@ -138,7 +138,9 @@ section { padding: clamp(64px, 11vw, 140px) var(--gutter); }
 
 /* price lookup */
 .lookup-sec { background: var(--paper-2); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); align-items: start; }
-.lookup { position: relative; margin: 1.6rem 0 .8rem; max-width: 30rem; }
+/* z-index: the scroll movement (.rv) makes every block of this column its own layer; without it the suggestions
+   opened underneath the line of text that follows the box and the first names couldn't be clicked */
+.lookup { position: relative; z-index: 6; margin: 1.6rem 0 .8rem; max-width: 30rem; }
 .lookup label { display: block; font-weight: 600; font-size: 1rem; margin-bottom: 6px; }
 .lookup input { width: 100%; font: 400 1.15rem var(--body); padding: 14px 16px; border-radius: 8px; border: 2px solid var(--ink); background: #F3EFED; color: var(--ink); }
 #lk-list { position: absolute; z-index: 5; left: 0; right: 0; top: 100%; margin: 4px 0 0; padding: 4px; list-style: none; background: #F3EFED; border: 2px solid var(--ink); border-radius: 8px; max-height: 320px; overflow: auto; }
