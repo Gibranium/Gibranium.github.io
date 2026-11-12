@@ -8,7 +8,8 @@
     if (parent) parent.appendChild(n);
     return n;
   };
-  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // "Reduce motion" (a system setting) makes the page stand still on purpose. ?motion=1 in the address overrides it, to check.
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches && !/[?&]motion=1/.test(location.search);
 
   // movement on scroll: the elements already on the page rise into place once, one after the other, when their
   // section comes into view. Only with IntersectionObserver and without "reduce motion"; otherwise nothing is hidden.
