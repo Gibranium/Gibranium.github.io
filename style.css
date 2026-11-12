@@ -272,3 +272,14 @@ section { padding: clamp(64px, 11vw, 140px) var(--gutter); }
 .foot { padding: 28px var(--gutter) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 0.98rem; color: var(--ink-2); }
 .foot a { margin-right: 14px; }
 .foot p { margin: 0; }
+
+/* two short sections side by side on wide screens (How I work | For analysts and hiring teams; Not buying yet? | About) */
+.pair { display: grid; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 980px) {
+  .pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+  .pair > section { padding-top: clamp(56px, 7vw, 100px); padding-bottom: clamp(56px, 7vw, 100px); }
+  .pair > section + section { padding-left: clamp(16px, 2.5vw, 40px); }
+  .pair > section:first-child { padding-right: clamp(16px, 2.5vw, 40px); }
+  .pair .cutback { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .pair h2 { font-size: clamp(2rem, 3.4vw, 3.2rem); }
+}
