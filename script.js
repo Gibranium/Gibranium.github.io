@@ -10,6 +10,85 @@
   };
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // movement on scroll: the elements already on the page rise into place once, one after the other, when their
+  // section comes into view. Only with IntersectionObserver and without "reduce motion"; otherwise nothing is hidden.
+  if (!still && 'IntersectionObserver' in window) {
+    const groups = [
+      ['.story-head > *, .story > h2', ''], ['.lookup-sec .price-text > *', ''], ['.lookup-sec .price-card', 'rv-scale'],
+      ['.services > h2, .services > .intro, .services .offer, .services > *:not(h2):not(.intro):not(.offer)', ''], ['.proof > h2, .proof article', ''],
+      ['.how > h2', ''], ['.how-list dt, .how-list dd', 'rv-left'], ['.how > *:not(h2):not(.how-list)', ''], ['.method-band > *', ''], ['.media-text > *', ''], ['.reel', 'rv-scale'],
+      ['.cutback > *, .cutback li', ''], ['.about > *', ''], ['.book > *, .book form > *', '']];
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    const seen = new Set();
+    groups.forEach(([sel, extra]) => {
+      let i = 0, parent = null;
+      document.querySelectorAll(sel).forEach(n => {
+        if (seen.has(n) || n.closest('.hero')) return;
+        for (let p = n.parentElement; p; p = p.parentElement) if (seen.has(p)) return;     // a parent already moves
+        seen.add(n);
+        if (n.parentElement !== parent) { parent = n.parentElement; i = 0; }                // the sequence restarts per block
+        n.classList.add('rv'); if (extra) n.classList.add(extra);
+        n.style.setProperty('--i', Math.min(i++, 6));
+        io.observe(n);
+      });
+    });
+  }
+
+  // the reel of graphics (For editors and brands): it turns by itself; a sideways swipe on the trackpad (or a drag,
+  // or the arrow keys) pushes it, stops it or sends it back, then it drifts to its own pace again.
+  document.querySelectorAll('.reel').forEach(reel => {
+    const view = reel.querySelector('.reel-view'), track = reel.querySelector('.reel-track');
+    if (!view || !track || still) return;                       // reduced motion: the plain scrollable row stays
+    const items = Array.from(track.children);
+    if (items.length < 2) return;
+    items.forEach(li => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); });   // endless loop
+    reel.classList.add('is-live');
+    const BASE = 36;                                            // px per second, its own pace
+    let x = 0, v = BASE, target = BASE, half = 0, last = 0, on = false, paused = false, hover = false, drag = null, idle = 0;
+    const measure = () => { half = track.scrollWidth / 2 + parseFloat(getComputedStyle(track).columnGap || 0) / 2; };
+    const frame = t => {
+      if (!on) return;
+      const dt = Math.min(0.05, (t - last) / 1000 || 0); last = t;
+      if (!drag) {
+        const want = (paused || hover) && performance.now() > idle ? 0 : target;
+        v += (want - v) * Math.min(1, dt * 3);                 // ease to the pace it should have
+        if (performance.now() > idle) target += ((paused ? 0 : BASE) - target) * Math.min(1, dt * 0.9);   // a push fades back to its own pace
+        x += v * dt;
+      }
+      if (half) x = ((x % half) + half) % half;
+      track.style.transform = 'translate3d(' + (-x).toFixed(1) + 'px,0,0)';
+      requestAnimationFrame(frame);
+    };
+    const start = () => { if (!on) { on = true; last = performance.now(); measure(); requestAnimationFrame(frame); } };
+    const push = d => { target = Math.max(-700, Math.min(700, target + d)); v += d * 0.5; idle = performance.now() + 900; };
+    view.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;     // vertical scroll goes to the page
+      e.preventDefault();
+      x += e.deltaX; push(e.deltaX * 1.2);                   // the swipe moves it directly and leaves it some speed
+    }, { passive: false });
+    view.addEventListener('pointerdown', e => { drag = { x0: e.clientX, x, t: performance.now(), lx: e.clientX, v: 0 }; view.classList.add('is-drag'); view.setPointerCapture(e.pointerId); });
+    view.addEventListener('pointermove', e => {
+      if (!drag) return;
+      const now = performance.now(); drag.v = (drag.lx - e.clientX) / Math.max(1, now - drag.t) * 1000; drag.lx = e.clientX; drag.t = now;
+      x = drag.x + (drag.x0 - e.clientX);
+    });
+    const drop = () => { if (!drag) return; v = drag.v; target = Math.max(-900, Math.min(900, drag.v)); idle = performance.now() + 700; drag = null; view.classList.remove('is-drag'); };
+    view.addEventListener('pointerup', drop); view.addEventListener('pointercancel', drop);
+    view.addEventListener('mouseenter', () => { hover = true; }); view.addEventListener('mouseleave', () => { hover = false; });
+    view.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { push(500); e.preventDefault(); } else if (e.key === 'ArrowLeft') { push(-500); e.preventDefault(); } });
+    reel.querySelectorAll('[data-reel]').forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.reel;
+      if (k === 'toggle') { paused = !paused; b.textContent = paused ? 'Play' : 'Pause'; b.setAttribute('aria-label', paused ? 'Play the carousel' : 'Pause the carousel'); if (!paused) target = BASE; }
+      else push(k === 'next' ? 700 : -700);
+    }));
+    window.addEventListener('resize', measure);
+    track.querySelectorAll('img').forEach(img => img.addEventListener('load', measure));
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { if (es[0].isIntersecting) start(); else on = false; }, { rootMargin: '200px 0px' }).observe(reel);
+    else start();
+  });
+
   // hero: 13,908 transfers, one dot each. They start as one block (every signing looks the same on the day)
   // and sort into the three outcomes. Shares (run of 12 Nov 2026): 43.4 met / 33.6 not selected or too few minutes / the rest played and fell short.
   const canvas = document.querySelector('.dots');

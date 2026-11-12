@@ -208,11 +208,34 @@ section { padding: clamp(64px, 11vw, 140px) var(--gutter); }
 .method-band .btn { margin: 0 8px 8px 0; }
 
 /* media */
-.media { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); align-items: center; background: var(--paper-2); }
-.media-fig { margin: 0; }
-.media-fig img { border-radius: 6px; }
-.media-fig figcaption { font-size: 0.92rem; color: var(--ink-2); margin-top: 8px; }
-@media (max-width: 860px) { .media { grid-template-columns: 1fr; } }
+.media { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); background: var(--paper-2); overflow: hidden; }
+.media-text { max-width: var(--measure); }
+/* the reel: graphics that turn by themselves; the trackpad pushes, stops or reverses them (script.js). Without the
+   script, or with reduced motion, it is a plain row you scroll sideways. */
+.reel { min-width: 0; }
+.reel-view { overflow-x: auto; overflow-y: hidden; margin: 0 calc(-1 * var(--gutter)); padding: 4px var(--gutter); scrollbar-width: thin; }
+.reel.is-live .reel-view { overflow: hidden; cursor: grab; touch-action: pan-y; }
+.reel.is-live .reel-view.is-drag { cursor: grabbing; }
+.reel-view:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.reel-track { display: flex; gap: clamp(16px, 2.4vw, 32px); list-style: none; margin: 0; padding: 0; width: max-content; will-change: transform; }
+.reel-track li { flex: none; margin: 0; }
+.reel-track figure { margin: 0; }
+.reel-track img { height: clamp(260px, 44vw, 460px); width: auto; max-width: none; border-radius: 6px; display: block; background: var(--paper); box-shadow: 0 1px 0 var(--rule); -webkit-user-drag: none; user-select: none; }
+.reel-track figcaption { font-size: 0.92rem; color: var(--ink-2); margin-top: 8px; max-width: 34ch; }
+.reel-hint { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.92rem; color: var(--ink-2); }
+.reel-btn { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 4px 12px; min-width: 40px; cursor: pointer; }
+.reel-btn:hover, .reel-btn:focus-visible { background: var(--ink); color: var(--paper-2); }
+.reel:not(.is-live) .reel-btn { display: none; }
+.reel-tip { margin-left: 6px; }
+.reel:not(.is-live) .reel-tip { display: none; }
+
+/* movement on scroll: sections' own elements rise into place once, in sequence (script.js adds .rv / .is-in).
+   Nothing is hidden without the script or with reduced motion. */
+.rv { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--i, 0) * 90ms); }
+.rv.rv-left { transform: translateX(-28px); }
+.rv.rv-scale { transform: scale(.965); }
+.rv.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
 
 /* cutback */
 .cutback { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); }
