@@ -13,15 +13,20 @@
 
   // movement on scroll: the elements already on the page rise into place once, one after the other, when their
   // section comes into view. Only with IntersectionObserver and without "reduce motion"; otherwise nothing is hidden.
-  if (!still && 'IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window) {
     const groups = [
       ['.story-head > *, .story > h2', ''], ['.lookup-sec .price-text > *', ''], ['.lookup-sec .price-card', 'rv-scale'],
       ['.services > h2, .services > .intro, .services .offer, .services > *:not(h2):not(.intro):not(.offer)', ''], ['.proof > h2, .proof article', ''],
       ['.how > h2', ''], ['.how-list dt, .how-list dd', 'rv-left'], ['.how > *:not(h2):not(.how-list)', ''], ['.method-band > *', ''], ['.media-text > *', ''], ['.reel', 'rv-scale'],
       ['.cutback > *, .cutback li', ''], ['.about > *', ''], ['.book > *, .book form > *', '']];
+    // an element comes in when it is well inside the screen (not at its very bottom edge, where nobody looks) and
+    // goes back to its start when it leaves below, so scrolling up and down plays it again
     const io = new IntersectionObserver(es => {
-      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('is-in');
+        else if (e.boundingClientRect.top > 0) e.target.classList.remove('is-in');
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -16% 0px' });
     const seen = new Set();
     groups.forEach(([sel, extra]) => {
       let i = 0, parent = null;
@@ -31,7 +36,7 @@
         seen.add(n);
         if (n.parentElement !== parent) { parent = n.parentElement; i = 0; }                // the sequence restarts per block
         n.classList.add('rv'); if (extra) n.classList.add(extra);
-        n.style.setProperty('--i', Math.min(i++, 6));
+        n.style.setProperty('--i', Math.min(i++, 5));
         io.observe(n);
       });
     });
@@ -41,7 +46,7 @@
   // or the arrow keys) pushes it, stops it or sends it back, then it drifts to its own pace again.
   document.querySelectorAll('.reel').forEach(reel => {
     const view = reel.querySelector('.reel-view'), track = reel.querySelector('.reel-track');
-    if (!view || !track || still) return;                       // reduced motion: the plain scrollable row stays
+    if (!view || !track) return;                                // it always turns; Pause stops it (the button is always there)
     const items = Array.from(track.children);
     if (items.length < 2) return;
     items.forEach(li => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); });   // endless loop
